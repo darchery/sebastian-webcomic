@@ -1,16 +1,42 @@
-# React + Vite
+# Sebastian Comic Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Pagina web del comic de Sebastian, un demonio normal viviendo en el inframundo junto a su amigo Julio. Comic animado, comico, con tono adulto.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Leer el comic online (capitulo por capitulo, con selector de paginas)
+- Conocer a los personajes (biografia, edad, imagen)
+- Descargar wallpapers e ilustraciones
+- Leer noticias y novedades del autor
+- Donar via Ko-fi o PayPal
 
-## React Compiler
+## Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React + Vite** — frontend
+- **React Router DOM** — navegacion entre paginas
+- **Supabase** — base de datos (PostgreSQL) + storage de imagenes
+- **CSS vanilla** — estilos con custom properties, sin framework
+- **Vercel** — hosting y despliegue automatico
 
-## Expanding the ESLint configuration
+## Estructura
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+comic-web-project/
+├── src/
+│   ├── components/     → Navbar, Footer, Layout, CharacterCard
+│   ├── pages/          → Home, Comic, Characters, News, Downloads, Donate
+│   ├── lib/            → Conexion Supabase
+│   └── index.css       → Estilos globales
+├── index.html
+└── package.json
+```
+
+## Contribuir
+
+1. Fork el repositorio
+2. Crea una rama (`git checkout -b mi-feature`)
+3. Haz commit (`git commit -m "anyadir feature"`)
+4. Push a la rama (`git push origin mi-feature`)
+5. Abre un Pull Request
+
+Sigue los pasos de [PLAN.md](../PLAN.md) para entender la arquitectura.

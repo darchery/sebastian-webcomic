@@ -5,10 +5,14 @@ import Characters from './pages/Characters'
 import News from './pages/News'
 import Downloads from './pages/Downloads'
 import Donate from './pages/Donate'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+
 
 export default function App() {
   return (
     <BrowserRouter>
+      <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/comic" element={<Comic />} />
@@ -17,6 +21,7 @@ export default function App() {
         <Route path="/downloads" element={<Downloads />} />
         <Route path="/donate" element={<Donate />} />
       </Routes>
+      <Footer></Footer>
     </BrowserRouter>
   )
 }

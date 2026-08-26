@@ -1,16 +1,111 @@
---bg-primary: /* rojo claro rosita dark background (black or near-black)*/
---bg-secondary: /* rojo claro slightly lighter (dark gray)*/
---accent: /* rojo oscuro your main color (red or orange for demon theme)*/
---text-primary: /* negro light text (white)*/
---text-secondary: /* negro mas claro o rojo oscuro muted text (gray)*/
---font-main: /* Arial your chosen font*/
+:root {
+  --bg-primary: #eeb4be;      /* rojo oscuro rosita, fondo principal */
+  --bg-secondary: #a88187;    /* rojo claro un poco mas claro */
+  --accent: #8b1a1a;          /* rojo oscuro, color principal de acento */
+  --text-primary: #1a1a1a;    /* negro, texto principal */
+  --text-secondary: #4a3030;  /* rojo oscuro apagado, texto secundario */
+  --font-main: Arial, sans-serif;
+  --font-heading: Arial, sans-serif; 
+}
 
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body { 
-    background: var(--bg-primary); 
-    color: var(--text-primary); 
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-main);
 }
+
+
+.content {
+  max-width: 800px;      /* opcional: limita el ancho de lectura en pantallas grandes */
+  margin: 0 auto;         /* centra el bloque si usas max-width */
+  padding: 0 1.75rem;      /* esto es lo que te separa del borde de la pantalla */
+}
+
+.dani {
+    font-size: 1.25rem;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 3.25rem 2.5rem;
+    background: var(--bg-secondary);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    margin-bottom: 1.5rem; /* esto debería darte el espacio que buscas */
+
+}
+
+/* Donde pone el Título o Logo*/
+.navbar-logo {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* Enlaces de la barra de navegación */
+.navbar-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    font-size: 1.9rem;
+}
+.navbar-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.2s linear;
+}
+.navbar-links a:hover, .navbar-links a.active {
+    color: var(--accent);
+}
+
+/* Menú desplegable */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Adaptación para dispositivos móviles */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .navbar-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--bg-secondary);
+        padding: 1rem 2.5rem;
+    }
+
+    .navbar-links.open {
+        display: flex;
+    }
+}
+/* Navbar */
+
+/* Footer */
+.footer {
+   text-align: center;
+   padding: 1rem;
+}
+
+/*Footer */
