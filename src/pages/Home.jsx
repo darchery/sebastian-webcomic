@@ -3,10 +3,45 @@ import { supabase } from "../lib/supabaseClient";
 import DonationLink from "../components/DonationLink";
 
 export default function Home() {
+    const [news, setNews] = useState([]);
+    const [characters, setCharacters] = useState([]);
+
+    useEffect(() => {
+        supabase
+            .from('news_posts')
+            .select('*')
+            .order('created_at', {ascending: false}) // Noticias más recientes
+            .limit(3)
+            .then(({data, error}) => {
+                if (!error) {
+                    setNews(data)
+                    console.log(data);
+                } else {
+                    console.log(error);
+                } 
+            })
+        supabase
+            .from('characters')
+            .select('*')
+            .limit(1)
+            .then(({data ,error}) => {
+                if (!error) setCharacters(data)
+                else console.log(error)
+            })
+    }, [])
+
     return(
         <>
-            <div className="content">
+            <div className="content home">
                 <h1>COSAS DEL MAS ALLÁ con JULIO y SEBASTIÁN</h1>
+                <br />
+                {/* HERO */}
+                <section className="hero">
+                    <h2 className="hero-title">Sebastián</h2>
+                    <br />
+                    <p className="hero-subtitle">Un demonio normal y corriente viviendo en el infierno.</p>
+                    <a href="/comic" className="btn btn-primary">Leer Comic</a>
+                </section>
                 <br />
                 <section>
                     <h2>Introducción</h2>
@@ -75,6 +110,49 @@ export default function Home() {
                     <p>
                         <span className="dani"><b><i>~ Dani</i></b></span>
                     </p>
+                </section>
+                <br />
+                {/* CHARACTER SPOTLIGHT */}
+                <section className="home-section">
+                    <h2>Conoce a los Personajes</h2>
+                    <br />
+                    {characters.length > 0 ? (
+                        <div className="spotlight">
+                            <img src={characters[0].image_url} alt={characters[0].name} />
+                            <div>
+                            <h3>{characters[0].name}</h3>
+                            <p>{characters[0].bio}</p>
+                            <a href="/characters" className="btn">Ver todos</a>
+                            </div>
+                        </div>
+                    ) : (
+                    <p className="empty-text">No hay personajes aun</p>
+                    )}
+                </section>
+                <br />
+                {/* NEWS */}
+                <section className="home-section">
+                    <h2>Ultimas Noticias</h2>
+                    <br />
+                    {news.length === 0 ? (
+                    <p className="empty-text">No hay noticias aún</p>
+                    ) : (
+                    <div className="news-preview">
+                        {
+                            news.map(post => (
+                                <div key={post.id} className="news-card">
+                                    <h3>{post.title}</h3>
+                                    <p className="news-date">
+                                    {new Date(post.created_at).toLocaleDateString('es-ES')}
+                                    </p>
+                                    <p>{post.content.slice(0, 150)}...</p>
+                                <br />
+                                </div>
+                                )
+                            )
+                        }
+                    </div>
+                    )}
                 </section>
             </div>
         </>

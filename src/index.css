@@ -8,7 +8,7 @@
   --text-secondary: #412525;  /* rojo oscuro apagado, texto secundario */
   --font-main: 'Outfit', sans-serif;
   --font-heading: 'Bangers', sans-serif; 
-  --radius: 8px;
+  --radius: 5px;
 }
 
 * {
@@ -39,13 +39,10 @@ button {
 }
 
 .content {
-  max-width: 800px;      /* opcional: limita el ancho de lectura en pantallas grandes */
-  margin: 0 auto;         /* centra el bloque si usas max-width */
-  padding: 0 1.75rem;      /* esto es lo que te separa del borde de la pantalla */
-}
-
-.dani {
-    font-size: 1.25rem;
+    max-width: 800px;      /* opcional: limita el ancho de lectura en pantallas grandes */
+    margin: 0 auto;         /* centra el bloque si usas max-width */
+    padding: 0 1.75rem;      /* esto es lo que te separa del borde de la pantalla */
+    /* text-align: center;*/
 }
 
 .links {
@@ -54,26 +51,11 @@ button {
     transition: color 0.2s linear;
 }
 
-.boton-paypal {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2rem;
-}
-
-.boton-paypal input {
-    width: 11rem;
-}
-
-.img-donacion {
-    width: 700px;
-    border: 2px solid var(--accent);
-    border-radius: 5px;
-}
 
 .img-personajes {
     width: 1000px;
     border: 2px solid var(--accent);
-    border-radius: 5px;
+    border-radius: var(--radius);
 }
 
 /* Navbar */
@@ -81,7 +63,7 @@ button {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    padding: 3.25rem 2.5rem;
+    padding: 3rem 2rem;
     background: var(--bg-secondary);
     position: sticky;
     top: 0;
@@ -188,3 +170,81 @@ button {
 }
 
 /* Layout */
+
+/* Home */
+
+.dani {
+    font-size: 1.25rem;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+    border-radius: var(--radius);
+    margin-bottom: 0rem;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: var(--accent);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem 2rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    margin-top: 1rem;
+    text-decoration: none;
+    transition: background 0.2s linear;
+}
+
+.btn:hover {
+  background: var(--accent-hover);
+  color: var(--accent);
+}
+
+/* REFACTOR SECCIONES: ELEGIR ENTRE ESTA CLASE Y LOS BR ENTRE SECCIONES*/
+
+.home-section {
+  margin-bottom: 1.5rem;
+}
+
+
+.home-section h2 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+/* Home */
+
+/* Donate */
+.boton-paypal {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.boton-paypal input {
+    width: 11rem;
+}
+
+.img-donacion {
+    width: 700px;
+    border: 2px solid var(--accent);
+    border-radius: var(--radius);
+}
+/* Donate */
