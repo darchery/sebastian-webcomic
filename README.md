@@ -38,5 +38,3 @@ comic-web-project/
 3. Haz commit (`git commit -m "anyadir feature"`)
 4. Push a la rama (`git push origin mi-feature`)
 5. Abre un Pull Request
-
-Sigue los pasos de [PLAN.md](../PLAN.md) para entender la arquitectura.

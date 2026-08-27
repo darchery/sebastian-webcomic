@@ -1,36 +1,10 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
+import DonationLink from "../components/DonationLink";
 
 export default function Home() {
-    const [characters, setCharacters] = useState([])
-
-    function kofi() {
-        return(
-            <a href="https://ko-fi.com/TU_USUARIO" target="_blank" rel="noopener"> <b>Ko-fi</b></a>
-        )
-    }
-
-    function paypal() {
-        return(
-            <a href="https://paypal.me/TU_USUARIO" target="_blank" rel="noopener"> <b>PayPal</b></a>
-        )
-    }
-
-    useEffect(() => {
-        supabase.from('characters').select('*').
-        then(({ data, error }) => {
-            if (error) {
-                console.error(error)
-            } else {
-                setCharacters(data)
-                console.log(data)
-            }
-        })
-    }, [])
-
     return(
         <>
-
             <div className="content">
                 <h1>COSAS DEL MAS ALLÁ con JULIO y SEBASTIÁN</h1>
                 <br />
@@ -64,6 +38,8 @@ export default function Home() {
                 </p>
                 <br />
                 {/* Párrafo de las disculpas-disclaimer*/}
+                <h2>Disclaimer</h2>
+                <br />
                 <p>
                     Una pequeña aclaración legislativa: Esta historia es <b>completamente ficticia</b> y está hecha con <b>intención humorística</b>. 
                     No pretendo representar fielmente la realidad ni tengo intención de ofender a ningún individuo, colectivo, 
@@ -75,11 +51,13 @@ export default function Home() {
                     resulta absurdo, probablemente es   porque lo es.
                 </p>
                 <br />
+                <h2>Contribuciones</h2>
+                <br />
                 <p>
                     La mayoría del contenido será gratis, tanto las ilustraciones alternativas, wallpapers e 
                     incluso la mayoría del contenido del cómic.
                     Y, por último, si te gusta el proyecto y quieres ayudarme a seguir dibujándolo, dejo por aquí mi 
-                    {kofi()} y mi {paypal()}. 
+                    <DonationLink name="kofi"></DonationLink> y mi <DonationLink name="paypal"></DonationLink>. 
                     Cualquier pequeño apoyo será muy agradecido y ayudará a que pueda seguir dedicando tiempo a este cómic.
                 </p>
                 <br />
@@ -90,14 +68,6 @@ export default function Home() {
                 <p>
                     <span className="dani"><b><i>~ Dani</i></b></span>
                 </p>
-            </div>
-            <br />
-            <div className="content">
-                <h2>Personajes actuales</h2>
-                <br />
-                <ul>
-                    {characters.map(c => <li key={c.id}>{c.name}: {c.bio }</li>)}
-                </ul>
             </div>
         </>
 
