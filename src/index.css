@@ -1,11 +1,14 @@
 :root {
   --bg-primary: #eeb4be;      /* rojo oscuro rosita, fondo principal */
   --bg-secondary: #a88187;    /* rojo claro un poco mas claro */
+  --bg-card: #222;
   --accent: #8b1a1a;          /* rojo oscuro, color principal de acento */
+  --accent-hover: #ff4d5a;    /* rojo brillante, color de acento al pasar el mouse */
   --text-primary: #1a1a1a;    /* negro, texto principal */
-  --text-secondary: #4a3030;  /* rojo oscuro apagado, texto secundario */
-  --font-main: Arial, sans-serif;
-  --font-heading: Arial, sans-serif; 
+  --text-secondary: #412525;  /* rojo oscuro apagado, texto secundario */
+  --font-main: 'Outfit', sans-serif;
+  --font-heading: 'Bangers', sans-serif; 
+  --radius: 8px;
 }
 
 * {
@@ -18,8 +21,22 @@ body {
   background: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-main);
+  line-height: 1.6;
 }
 
+a {
+    color: var(--accent-hover)
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+button {
+    cursor: pointer;
+    font-family: var(--font-main);
+}
 
 .content {
   max-width: 800px;      /* opcional: limita el ancho de lectura en pantallas grandes */
@@ -76,7 +93,7 @@ body {
 /* Donde pone el Título o Logo*/
 .navbar-logo {
     font-family: var(--font-heading);
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     color: var(--accent);
     text-decoration: none;
 }
