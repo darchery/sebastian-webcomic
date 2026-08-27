@@ -1,6 +1,6 @@
 import DonationLink from "../components/DonationLink"
-import { supabase } from "../lib/supabaseClient"
-import { useState, useEffect } from "react" 
+/*import { supabase } from "../lib/supabaseClient"
+import { useState, useEffect } from "react"*/
 
 export default function Donate() {
     // Petición de una imagen concreta
@@ -34,19 +34,26 @@ export default function Donate() {
             <div className="content">
                 <h1>DONATIVOS Y FORMAS DE COLABORAR</h1>
                 <br />
-                <p>
-                    Hola! Muchas gracias por acercarte a la zona de donativos.
-                </p>
+                <section>
+                    <p>
+                        Hola! Muchas gracias por acercarte a la zona de donativos.
+                    </p>
+                </section>
+
                 <br />
-                <p>
-                    Contamos con el servicio de <DonationLink name="kofi"></DonationLink>, en el cual disponemos
-                    de donativos y servicios de membresía, que contará con ilustraciones exclusivas para 
-                    miembros y contenido del cómic anticipado.
-                </p>
+                <section>
+                    <p>
+                        Contamos con el servicio de <DonationLink name="kofi"></DonationLink>, en el cual disponemos
+                        de donativos y servicios de membresía, que contará con ilustraciones exclusivas para 
+                        miembros y contenido del cómic anticipado.
+                    </p>
+                </section>
                 <br />
-                <p>
-                    Además se podrá hacer donaciones vía <DonationLink name="paypal"></DonationLink>.
-                </p>
+                <section>
+                    <p>
+                        Además se podrá hacer donaciones vía <DonationLink name="paypal"></DonationLink>.
+                    </p>
+                </section>
                 <br />
                 {botonDonacion()}
                 
