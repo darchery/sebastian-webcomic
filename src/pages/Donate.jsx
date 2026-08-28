@@ -32,7 +32,7 @@ export default function Donate() {
     return (
         <>  
             <div className="content">
-                <h1>DONATIVOS Y FORMAS DE COLABORAR</h1>
+                <h1 className="page-title">DONATIVOS Y FORMAS DE COLABORAR</h1>
                 <br />
                 <section>
                     <p>

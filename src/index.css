@@ -1,11 +1,11 @@
 :root {
   --bg-primary: #eeb4be;      /* rojo oscuro rosita, fondo principal */
   --bg-secondary: #a88187;    /* rojo claro un poco mas claro */
-  --bg-card: #222;
+  --bg-card: #a88187;
   --accent: #8b1a1a;          /* rojo oscuro, color principal de acento */
   --accent-hover: #ff4d5a;    /* rojo brillante, color de acento al pasar el mouse */
   --text-primary: #1a1a1a;    /* negro, texto principal */
-  --text-secondary: #412525;  /* rojo oscuro apagado, texto secundario */
+  --text-secondary: #3f2424;  /* rojo oscuro apagado, texto secundario */
   --font-main: 'Outfit', sans-serif;
   --font-heading: 'Bangers', sans-serif; 
   --radius: 5px;
@@ -42,6 +42,7 @@ button {
     max-width: 800px;      /* opcional: limita el ancho de lectura en pantallas grandes */
     margin: 0 auto;         /* centra el bloque si usas max-width */
     padding: 0 1.75rem;      /* esto es lo que te separa del borde de la pantalla */
+    font-size: 1.20rem;
     /* text-align: center;*/
 }
 
@@ -58,6 +59,11 @@ button {
     border-radius: var(--radius);
 }
 
+.page-title {
+    font-family: var(--font-heading);
+    color: var(--accent);
+}
+
 /* Navbar */
 .navbar {
     display: flex;
@@ -68,7 +74,7 @@ button {
     position: sticky;
     top: 0;
     z-index: 1;
-    margin-bottom: 3rem; /* esto debería darte el espacio que buscas */
+    margin-bottom: 3rem; /* espacio entre la barra y el contenido */
     border: 1px solid #333;
 }
 
@@ -135,7 +141,7 @@ button {
     padding: 1rem;
     background: var(--bg-secondary);
     border: 1px solid #333;
-    margin-top: 3rem;
+    margin-top: 2rem;
     position: relative;
 }
 
@@ -143,7 +149,7 @@ button {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
 }
 .footer-links a {
     color: var(--accent);
@@ -177,12 +183,15 @@ button {
     font-size: 1.25rem;
 }
 
+
+/* Hero Section - Aquí se puede ver el botón de leer cómic */
 .hero {
     text-align: center;
     padding: 4rem 1rem;
+    /*TODO: Preguntar a dani que le gusta más*/
     background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
     border-radius: var(--radius);
-    margin-bottom: 0rem;
+    margin-bottom: 1rem;
 }
 
 .hero-title {
@@ -197,6 +206,7 @@ button {
     margin-bottom: 1rem 2rem;
 }
 
+/** Botón de Leer Cómic */
 .btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
@@ -215,8 +225,7 @@ button {
   color: var(--accent);
 }
 
-/* REFACTOR SECCIONES: ELEGIR ENTRE ESTA CLASE Y LOS BR ENTRE SECCIONES*/
-
+/* Secciones de la página de inicio */
 .home-section {
   margin-bottom: 1.5rem;
 }
@@ -228,6 +237,57 @@ button {
   margin-bottom: 1rem;
   color: var(--accent);
 }
+
+
+/* Conoce a los personajes */
+.spotlight {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--radius);
+}
+
+.spotlight img {
+    width: 220px;
+    border-radius: var(--radius);
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .spotlight {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* News */
+.news-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.news-card {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+}
+
+.news-date {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.empty-text {
+    color: var(--text-secondary);
+}
+
 
 /* Home */
 

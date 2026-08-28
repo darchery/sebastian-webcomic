@@ -19,13 +19,13 @@ export default function Characters() {
 
     return (
         <div className="content">
-            <h1>Personajes actuales</h1>
+            <h1 className="page-title">Personajes actuales</h1>
             <br />
             <ul>
                 {characters.map(c => <li key={c.id}><b>{c.name}</b>: {c.bio }</li>)}
             </ul>
             <br />
-            <img className="img-personajes" src="https://sxpjkvdcgsdzncoljzkx.supabase.co/storage/v1/object/public/wallpapers/personajes-con-medidas.webp" alt="Ficha de personajes con sus estaturas" />
+            <img className="img-personajes" src="https://sxpjkvdcgsdzncoljzkx.supabase.co/storage/v1/object/public/wallpapers/personajes-con-medidas-a-color.webp" alt="Ficha de personajes con sus estaturas" />
         </div>
     )
 }

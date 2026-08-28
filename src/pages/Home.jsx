@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import DonationLink from "../components/DonationLink";
+import { NavLink } from "react-router-dom";
+
 
 export default function Home() {
     const [news, setNews] = useState([]);
-    const [characters, setCharacters] = useState([]);
+    const [character, setCharacter] = useState();
 
     useEffect(() => {
         supabase
@@ -15,7 +17,6 @@ export default function Home() {
             .then(({data, error}) => {
                 if (!error) {
                     setNews(data)
-                    console.log(data);
                 } else {
                     console.log(error);
                 } 
@@ -23,29 +24,33 @@ export default function Home() {
         supabase
             .from('characters')
             .select('*')
-            .limit(1)
             .then(({data ,error}) => {
-                if (!error) setCharacters(data)
-                else console.log(error)
+                if (!error && data?.length) { // Verifica si data no es null/undefined y tiene al menos un elemento
+                    const randomCharacter = data[Math.floor(Math.random() * data.length)];
+                    setCharacter(randomCharacter)
+                } else {
+                    console.log(error)
+                }
             })
     }, [])
 
     return(
         <>
             <div className="content home">
-                <h1>COSAS DEL MAS ALLÁ con JULIO y SEBASTIÁN</h1>
+                <section className="page-title">
+                    <h1>COSAS DEL MAS ALLÁ con JULIO y SEBASTIÁN</h1>
+                </section>
                 <br />
                 {/* HERO */}
                 <section className="hero">
                     <h2 className="hero-title">Sebastián</h2>
                     <br />
                     <p className="hero-subtitle">Un demonio normal y corriente viviendo en el infierno.</p>
-                    <a href="/comic" className="btn btn-primary">Leer Comic</a>
+                    <NavLink to="/comic" className="btn btn-primary">Leer Comic</NavLink>
                 </section>
                 <br />
-                <section>
+                <section className="home-section">
                     <h2>Introducción</h2>
-                    <br />
                     <p>
                         Hola, querido lector. Soy <b>Dani</b>, y bienvenido a mi proyecto.
                     </p>
@@ -74,10 +79,9 @@ export default function Home() {
                     </p>
                 </section>
                 <br />
-                <section>
+                <section className="home-section">
                     {/* Párrafo de las disculpas-disclaimer*/}
                     <h2>Disclaimer</h2>
-                    <br />
                     <p>
                         Una pequeña aclaración legislativa: Esta historia es <b>completamente ficticia</b> y está hecha con <b>intención humorística</b>. 
                         No pretendo representar fielmente la realidad ni tengo intención de ofender a ningún individuo, colectivo, 
@@ -90,11 +94,10 @@ export default function Home() {
                     </p>
                 </section>
                 <br />
-                <section>
+                <section className="home-section">
                     <h2>Contribuciones</h2>
-                    <br />
                     <p>
-                        La mayoría del contenido será gratis, tanto las ilustraciones alternativas, wallpapers e 
+                        La mayoría del contenido será gratuito, tanto las ilustraciones alternativas, wallpapers e 
                         incluso la mayoría del contenido del cómic.
                         Y, por último, si te gusta el proyecto y quieres ayudarme a seguir dibujándolo, dejo por aquí mi 
                         <DonationLink name="kofi"></DonationLink> y mi <DonationLink name="paypal"></DonationLink>. 
@@ -102,8 +105,8 @@ export default function Home() {
                     </p>
                 </section>
                 <br />
-                <section>
-                    <p>
+                <section className="home-section">
+                    <p className="dani">
                         <b>Gracias por estar aquí y espero que disfrutes de la historia.</b>
                     </p>
                     <br />
@@ -115,43 +118,41 @@ export default function Home() {
                 {/* CHARACTER SPOTLIGHT */}
                 <section className="home-section">
                     <h2>Conoce a los Personajes</h2>
-                    <br />
-                    {characters.length > 0 ? (
+                    {character ? (
                         <div className="spotlight">
-                            <img src={characters[0].image_url} alt={characters[0].name} />
+                            <img src={character.image_url} alt={character.name} />
                             <div>
-                            <h3>{characters[0].name}</h3>
-                            <p>{characters[0].bio}</p>
-                            <a href="/characters" className="btn">Ver todos</a>
+                            <h3>{character.name}</h3>
+                            <p>{character.bio}</p>
+                            <NavLink to="/characters" className="btn">Ver todos</NavLink>
                             </div>
                         </div>
                     ) : (
-                    <p className="empty-text">No hay personajes aun</p>
+                        <p className="empty-text">No hay personajes aun</p>
                     )}
                 </section>
                 <br />
                 {/* NEWS */}
                 <section className="home-section">
                     <h2>Ultimas Noticias</h2>
-                    <br />
                     {news.length === 0 ? (
-                    <p className="empty-text">No hay noticias aún</p>
+                        <p className="empty-text">No hay noticias aún</p>
                     ) : (
-                    <div className="news-preview">
-                        {
-                            news.map(post => (
-                                <div key={post.id} className="news-card">
-                                    <h3>{post.title}</h3>
-                                    <p className="news-date">
-                                    {new Date(post.created_at).toLocaleDateString('es-ES')}
-                                    </p>
-                                    <p>{post.content.slice(0, 150)}...</p>
-                                <br />
-                                </div>
+                        <div className="news-preview">
+                            {
+                                news.map(post => (
+                                    <div key={post.id} className="news-card">
+                                        <h3>{post.title}</h3>
+                                        <p className="news-date">
+                                            {new Date(post.created_at).toLocaleDateString('es-ES')}
+                                        </p>
+                                        <p>{post.content?.slice(0, 150)}{post.content?.length > 150 && '...'}</p>
+                                    <br/>
+                                    </div>
+                                    )
                                 )
-                            )
-                        }
-                    </div>
+                            }
+                        </div>
                     )}
                 </section>
             </div>
