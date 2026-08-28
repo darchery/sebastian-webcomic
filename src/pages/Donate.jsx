@@ -34,29 +34,29 @@ export default function Donate() {
             <div className="content">
                 <h1 className="page-title">DONATIVOS Y FORMAS DE COLABORAR</h1>
                 <br />
-                <section>
-                    <p>
-                        Hola! Muchas gracias por acercarte a la zona de donativos.
-                    </p>
-                </section>
-
-                <br />
-                <section>
-                    <p>
-                        Contamos con el servicio de <DonationLink name="kofi"></DonationLink>, en el cual disponemos
-                        de donativos y servicios de membresía, que contará con ilustraciones exclusivas para 
-                        miembros y contenido del cómic anticipado.
-                    </p>
-                </section>
-                <br />
-                <section>
-                    <p>
-                        Además se podrá hacer donaciones vía <DonationLink name="paypal"></DonationLink>.
-                    </p>
-                </section>
+                <div className="news-card">
+                    <section>
+                        <p>
+                            Hola! Muchas gracias por acercarte a la zona de donativos.
+                        </p>
+                    </section>
+                    <br />
+                    <section>
+                        <p>
+                            Contamos con el servicio de <DonationLink name="kofi"></DonationLink>, en el cual disponemos
+                            de donativos y servicios de membresía, que contará con ilustraciones exclusivas para 
+                            miembros y contenido del cómic anticipado.
+                        </p>
+                    </section>
+                    <br />
+                    <section>
+                        <p>
+                            Además se podrá hacer donaciones vía <DonationLink name="paypal"></DonationLink>.
+                        </p>
+                    </section>
+                </div>
                 <br />
                 {botonDonacion()}
-                
                 {/* Implementación vía petición a supabase: imgDonacion && <img className="img-donacion" src={imgDonacion} alt="Foto de Sebastián trabjando en la oficina" />*/}
                 <img className="img-donacion" src="https://sxpjkvdcgsdzncoljzkx.supabase.co/storage/v1/object/public/wallpapers/sebastian-oficina.webp" alt="Foto de Sebastián trabjando en la oficina" />
             </div>

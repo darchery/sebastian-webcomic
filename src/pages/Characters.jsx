@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { supabase } from "../lib/supabaseClient"
+import CharacterCard from "../components/CharacterCard"
 
 export default function Characters() {
     const [characters, setCharacters] = useState([])
@@ -26,6 +27,16 @@ export default function Characters() {
             </ul>
             <br />
             <img className="img-personajes" src="https://sxpjkvdcgsdzncoljzkx.supabase.co/storage/v1/object/public/wallpapers/personajes-con-medidas-a-color.webp" alt="Ficha de personajes con sus estaturas" />
+            <br />
+            <section >
+                {
+                    characters.map(c => (
+                        <div className="">
+                                <CharacterCard character={c}></CharacterCard>
+                        </div>
+                    ))
+                }
+            </section>
         </div>
     )
 }

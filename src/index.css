@@ -1,7 +1,7 @@
 :root {
   --bg-primary: #eeb4be;      /* rojo oscuro rosita, fondo principal */
   --bg-secondary: #a88187;    /* rojo claro un poco mas claro */
-  --bg-card: #a88187;
+  --bg-card: #cea2a9;
   --accent: #8b1a1a;          /* rojo oscuro, color principal de acento */
   --accent-hover: #ff4d5a;    /* rojo brillante, color de acento al pasar el mouse */
   --text-primary: #1a1a1a;    /* negro, texto principal */
@@ -189,7 +189,7 @@ button {
     text-align: center;
     padding: 4rem 1rem;
     /*TODO: Preguntar a dani que le gusta más*/
-    background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+    background: var(--bg-card);
     border-radius: var(--radius);
     margin-bottom: 1rem;
 }
@@ -250,7 +250,7 @@ button {
 }
 
 .spotlight img {
-    width: 220px;
+    width: 175px;
     border-radius: var(--radius);
     object-fit: cover;
 }
@@ -308,3 +308,50 @@ button {
     border-radius: var(--radius);
 }
 /* Donate */
+
+
+/* Character Card */
+.character-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin: 1rem;
+}
+
+.character-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px;
+}
+
+.character-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.character-info {
+    padding: 1.75rem;
+}
+
+.character-info h3 {
+    font-family: var(--font-heading);
+    color: var(--accent); /* TODO: ROJO o NEGRO*/
+}
+
+.character-age {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.character-bio {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Máximo 3 líneas*/
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.character-bio.expanded {
+    -webkit-line-clamp: unset; 
+}
