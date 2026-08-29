@@ -43,7 +43,7 @@ button {
     margin: 0 auto;         /* centra el bloque si usas max-width */
     padding: 0 1.75rem;      /* esto es lo que te separa del borde de la pantalla */
     font-size: 1.20rem;
-    /* text-align: center;*/
+    text-align: center;
 }
 
 .links {
@@ -62,6 +62,7 @@ button {
 .page-title {
     font-family: var(--font-heading);
     color: var(--accent);
+    text-align: center;
 }
 
 /* Navbar */
@@ -327,7 +328,7 @@ button {
 
 .character-card img {
     width: 100%;
-    height: 400px;
+    height: 250px;
     object-fit: cover;
 }
 
@@ -354,4 +355,78 @@ button {
 
 .character-bio.expanded {
     -webkit-line-clamp: unset; 
+}
+
+.characters-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(250px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .characters-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+/* Novedades - Noticias */
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.news-article {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--radius);
+}
+
+.news-article h2 {
+    font-family: var(--font-heading);
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+}
+
+.news-article time {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.news-article p {
+    margin-top: 1rem;
+    color: var(--text-primary);
+    line-height: 1.8;
+}
+
+/* Descargables */
+.downloads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.download-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.download-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.download-info {
+    padding: 1rem;
+}
+
+.download-info h3 {
+    font-family: var(--font-heading);
+    color: var(--accent);
+    margin-bottom: 0.5rem,
 }

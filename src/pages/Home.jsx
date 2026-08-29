@@ -46,7 +46,7 @@ export default function Home() {
                     <h2 className="hero-title">Sebastián</h2>
                     <br />
                     <p className="hero-subtitle">Un demonio normal y corriente viviendo en el infierno.</p>
-                    <NavLink to="/comic" className="btn btn-primary">Leer Comic</NavLink>
+                    <NavLink to="/comic" className="btn">Leer Comic</NavLink>
                 </section>
                 <br />
                 <section className="home-section">
@@ -142,9 +142,9 @@ export default function Home() {
                 <br />
                 {/* NEWS */}
                 <section className="home-section">
-                    <h2>Ultimas Noticias</h2>
+                    <h2>Ultimas Novedades</h2>
                     {news.length === 0 ? (
-                        <p className="empty-text">No hay noticias aún</p>
+                        <p className="empty-text">No hay novedades aún</p>
                     ) : (
                         <div className="news-preview">
                             {

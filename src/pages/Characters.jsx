@@ -7,36 +7,37 @@ export default function Characters() {
 
     useEffect(() => {
         supabase
-            .from('characters').select('*')
+            .from('characters')
+            .select('*')
+            .order('name', {ascending: false})
             .then(({ data, error }) => {
                 if (error) {
                     console.error(error)
                 } else {
                     setCharacters(data)
                 }
-                }
+            }
             )
     }, [])
 
     return (
         <div className="content">
-            <h1 className="page-title">Personajes actuales</h1>
-            <br />
-            <ul>
-                {characters.map(c => <li key={c.id}><b>{c.name}</b>: {c.bio }</li>)}
-            </ul>
-            <br />
-            <img className="img-personajes" src="https://sxpjkvdcgsdzncoljzkx.supabase.co/storage/v1/object/public/wallpapers/personajes-con-medidas-a-color.webp" alt="Ficha de personajes con sus estaturas" />
-            <br />
-            <section >
-                {
-                    characters.map(c => (
-                        <div className="">
-                                <CharacterCard character={c}></CharacterCard>
+            <h1 className="page-title">Personajes</h1>
+            {
+                characters.length === 0 ? 
+                    (<p className="empty-text">No hay personajes disponibles</p>) 
+                    :
+                    (<section>
+                        <div className="characters-grid">
+                            {
+                                characters.map(c => (
+                                    <CharacterCard key={c.id} character={c}></CharacterCard>
+                                    )
+                                )
+                            }
                         </div>
-                    ))
-                }
-            </section>
+                    </section>)
+            }
         </div>
     )
 }

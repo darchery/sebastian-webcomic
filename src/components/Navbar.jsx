@@ -21,10 +21,10 @@ export default function Navbar() {
                     <NavLink to="/characters" end onClick={() => setMenuOpen(false)}>Personajes</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/news" end onClick={() => setMenuOpen(false)}>Noticias</NavLink>
-                </li>
+                    <NavLink to="/downloads" end onClick={() => setMenuOpen(false)}>Descargables</NavLink>
+                </li> 
                 <li>
-                    <NavLink to="/downloads" end onClick={() => setMenuOpen(false)}>Descargas</NavLink>
+                    <NavLink to="/news" end onClick={() => setMenuOpen(false)}>Novedades</NavLink>
                 </li>
                 <li>
                     <NavLink to="/donate" end onClick={() => setMenuOpen(false)}>Donar</NavLink>
