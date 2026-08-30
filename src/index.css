@@ -46,8 +46,14 @@ button {
     text-align: center;
 }
 
-.links {
+.link-kofi {
     color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s linear;
+}
+
+.link-paypal {
+    color: #005ea6;;
     text-decoration: none;
     transition: color 0.2s linear;
 }
@@ -151,11 +157,6 @@ button {
     justify-content: center;
     gap: 1rem;
     margin-top: 0.75rem;
-}
-.footer-links a {
-    color: var(--accent);
-    text-decoration: none;
-    transition: color 0.2s linear;
 }
 
 /* Footer */
@@ -274,6 +275,7 @@ button {
     gap: 1rem;
 }
 
+/* USADO DE FORMA GLOBAL PARA CADA SECCIÓN DE TEXTO*/
 .news-card {
     background: var(--bg-card);
     padding: 1.5rem;
@@ -291,25 +293,6 @@ button {
 
 
 /* Home */
-
-/* Donate */
-.boton-paypal {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2rem;
-}
-
-.boton-paypal input {
-    width: 11rem;
-}
-
-.img-donacion {
-    width: 700px;
-    border: 2px solid var(--accent);
-    border-radius: var(--radius);
-}
-/* Donate */
-
 
 /* Character Card */
 .character-card {
@@ -430,3 +413,85 @@ button {
     color: var(--accent);
     margin-bottom: 0.5rem,
 }
+
+/* Donate */
+.boton-paypal {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.boton-paypal input {
+    width: 11rem;
+}
+
+.img-donacion {
+    width: 700px;
+    border: 2px solid var(--accent);
+    border-radius: var(--radius);
+    margin-top: 2rem;
+}
+
+.donate-page {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.donate-intro {
+    margin-bottom: 2rem;
+}
+
+.donate-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.donate-btn {
+    padding: 1rem 2rem;
+    border-radius: var(--radius);
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: white;
+}
+
+.kofi-btn {
+  background: var(--accent);
+}
+
+.kofi-btn:hover {
+    background: var(--accent-hover);
+    color: var(--accent);
+}
+
+.paypal-btn {
+  background: #005ea6;
+}
+
+.paypal-btn:hover {
+    background: #2dabff;
+    color: #00243f;
+}
+
+.donate-info {
+    text-align: left;
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--radius);
+}
+
+.donate-info h3 {
+    font-family: var(--font-heading);
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.donate-info {
+    list-style: disc inside;
+}
+
+/* Donate */
+

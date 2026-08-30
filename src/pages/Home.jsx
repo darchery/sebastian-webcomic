@@ -99,7 +99,7 @@ export default function Home() {
                 </section>
                 <br />
                 <section className="home-section">
-                    <h2>Contribuciones</h2>
+                    <h2>¿Cómo apoyar el proyecto?</h2>
                     <div className="news-card">
                         <p>
                             La mayoría del contenido será gratuito, tanto las ilustraciones alternativas, wallpapers e 
