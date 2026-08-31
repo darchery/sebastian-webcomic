@@ -437,7 +437,7 @@ button {
 }
 
 .img-donacion {
-    width: 700px;
+    max-width: 100%;
     border: 2px solid var(--accent);
     border-radius: var(--radius);
     margin-top: 2rem;
