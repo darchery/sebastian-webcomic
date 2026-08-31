@@ -83,6 +83,11 @@ button {
     z-index: 1;
     margin-bottom: 3rem; /* espacio entre la barra y el contenido */
     border: 1px solid #333;
+    transition: transform 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar.on-comic {
+    position: relative;
 }
 
 /* Donde pone el Título o Logo*/
@@ -150,6 +155,11 @@ button {
     border: 1px solid #333;
     margin-top: 2rem;
     position: relative;
+    transition: transform 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-text {
+    font-size: 1.2rem;
 }
 
 .footer-links {
@@ -157,6 +167,7 @@ button {
     justify-content: center;
     gap: 1rem;
     margin-top: 0.75rem;
+    font-size: 1.2rem;
 }
 
 /* Footer */
@@ -495,3 +506,56 @@ button {
 
 /* Donate */
 
+/* Lector del cómic */
+
+.chapter-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.chapter-selector select {
+    padding: 0.5rem 1rem;
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 2px solid var(--accent);
+    border-radius: var(--radius);
+    margin-left: 0.5rem;
+    font-family: var(--font-main);
+    font-size: 1.2rem;
+}
+
+.chapter-selector option {
+    font-family: var(--font-main);
+    font-size: 1.2rem;
+}
+
+.page-scroll {
+    display:  flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.comic-page {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    display: block;
+    margin: 0 auto;
+}
+
+/* OPCION ALTERNATIVA: ancho completo. Descomenta y comenta la .comic-page de arriba */
+/*
+.comic-page {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+*/

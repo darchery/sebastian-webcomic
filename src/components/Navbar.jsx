@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false)
+    const location = useLocation()
+    const isComic = location.pathname === '/comic'
 
     return(
-        <nav className="navbar">
+        <nav className={`navbar ${isComic ? 'on-comic' : ''}`}>
             <NavLink to="/" className="navbar-logo">Sebastián</NavLink>
             
             <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>&#9776;</button>
