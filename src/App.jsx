@@ -6,6 +6,7 @@ import News from './pages/News'
 import Downloads from './pages/Downloads'
 import Donate from './pages/Donate'
 import Layout from './components/Layout'
+import Page404 from './pages/Page404'
 
 export default function App() {
   return (
@@ -18,6 +19,8 @@ export default function App() {
           <Route path="/news" element={<News />} />
           <Route path="/downloads" element={<Downloads />} />
           <Route path="/donate" element={<Donate />} />
+
+          <Route path="*" element={<Page404 />} />
         </Route>
       </Routes>
     </BrowserRouter>

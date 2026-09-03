@@ -18,7 +18,7 @@ export default function Home() {
                 if (!error) {
                     setNews(data)
                 } else {
-                    console.log(error);
+                    console.error(error);
                 } 
             })
         supabase
@@ -29,7 +29,7 @@ export default function Home() {
                     const randomCharacter = data[Math.floor(Math.random() * data.length)];
                     setCharacter(randomCharacter)
                 } else {
-                    console.log(error)
+                    console.error(error)
                 }
             })
     }, [])

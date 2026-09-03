@@ -53,16 +53,9 @@ button {
 }
 
 .link-paypal {
-    color: #005ea6;;
+    color: #005ea6;
     text-decoration: none;
     transition: color 0.2s linear;
-}
-
-
-.img-personajes {
-    width: 1000px;
-    border: 2px solid var(--accent);
-    border-radius: var(--radius);
 }
 
 .page-title {
@@ -216,7 +209,7 @@ button {
 .hero-subtitle {
     font-size: 1.5rem;
     color: var(--text-secondary);
-    margin-bottom: 1rem 2rem;
+    margin-bottom: 2rem;
 }
 
 /** Botón de Leer Cómic */
@@ -317,7 +310,7 @@ button {
 
 .character-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px;
+    box-shadow: 0 8px 24px var(--accent);
 }
 
 .character-card img {
@@ -422,7 +415,6 @@ button {
 .download-info h3 {
     font-family: var(--font-heading);
     color: var(--accent);
-    margin-bottom: 0.5rem,
 }
 
 /* Donate */
@@ -492,6 +484,8 @@ button {
     background: var(--bg-card);
     padding: 2rem;
     border-radius: var(--radius);
+    text-align: center;
+    list-style: disc inside;
 }
 
 .donate-info h3 {
@@ -500,8 +494,13 @@ button {
     margin-bottom: 1rem;
 }
 
-.donate-info {
-    list-style: disc inside;
+.donate-info h3 {
+    font-family: var(--font-heading);
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.donate-info ul {
 }
 
 /* Donate */

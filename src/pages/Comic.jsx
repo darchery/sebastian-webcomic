@@ -1,4 +1,4 @@
-import { use, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
 
 export default function Comic() {
@@ -20,30 +20,26 @@ export default function Comic() {
                         setSelectedChapter(data[0])
                     }
                 } else {
-                    console.log(error)
+                    console.error(error)
                 }
             })
     }, [])
 
     // 2 fetch: cargar las páginas del capítulo
     useEffect(() => {
-        if (!selectedChapter) {
-            return   
-        } else {
-            supabase
-                .from('comic_pages')
-                .select('*')
-                .eq('chapter_id', selectedChapter.id)
-                .order('page_number')
-                .then(({ data, error }) => {
-                    if (!error) {
-                        setPages(data)
-                    } else {
-                        console.log(error)
-                    }
-                })
-        }
-
+        if (!selectedChapter) return
+        supabase
+            .from('comic_pages')
+            .select('*')
+            .eq('chapter_id', selectedChapter.id)
+            .order('page_number')
+            .then(({ data, error }) => {
+                if (!error) {
+                    setPages(data)
+                } else {
+                    console.error(error)
+                }
+            })
     }, [selectedChapter])
 
     // Al cambiar de capítulo vuelve arriba para empezar desde la página 1

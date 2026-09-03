@@ -1,22 +1,6 @@
 import DonationLink from "../components/DonationLink"
-/*import { supabase } from "../lib/supabaseClient"
-import { useState, useEffect } from "react"*/
 
 export default function Donate() {
-    // Petición de una imagen concreta
-    /*const [imgDonacion, setImgDonacion] = useState('')
-
-    useEffect(() => {
-        supabase
-            .from('downloads')
-            .select('image_url')
-            .eq('id', 'c1c3438e-302f-46b8-8dfb-cce41af6efbb')
-            .single()
-            .then(({ data, error }) => {
-                if (!error) setImgDonacion(data.image_url)
-                else console.log(error)
-            })
-    }, [])*/
 
     return (
         <>  
@@ -62,7 +46,7 @@ export default function Donate() {
                             Ko-fi
                         </a>
                         <a 
-                            href="https://www.paypal.com/donate?token=2wmpgLbdDaT3dw22q86BJ5Pup0GtXg-x7U7mY0Y10qgfjiD_lfQZLR78DbtZvDtvocsWA5ZJJg2gOpQA"
+                            href="https://www.paypal.com/donate/?hosted_button_id=LHU9A3BDUCQRC"
                             target="_blank"
                             rel="noopener"
                             className="donate-btn paypal-btn"
@@ -78,7 +62,6 @@ export default function Donate() {
                             <li>Ilustraciones exclusivas para descarga</li>
                         </ul>
                     </div>
-                    {/* Implementación vía petición a supabase: imgDonacion && <img className="img-donacion" src={imgDonacion} alt="Foto de Sebastián trabjando en la oficina" />*/}
                     <img className="img-donacion" src="https://sxpjkvdcgsdzncoljzkx.supabase.co/storage/v1/object/public/wallpapers/sebastian-oficina.webp" alt="Foto de Sebastián trabjando en la oficina" />
                 </div>
             </div>

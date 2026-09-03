@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabaseClient";
-import { NavLink } from "react-router-dom";
 
 export default function Downloads() {
     const [downloads, setDownloads] = useState([])
@@ -15,7 +14,7 @@ export default function Downloads() {
                 if (!error) {
                     setDownloads(data)
                 } else {
-                    console.log(error)
+                    console.error(error)
                 }
             })
         }, [])

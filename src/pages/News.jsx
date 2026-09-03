@@ -13,7 +13,7 @@ export default function News() {
                 if (!error) {
                     setNews(data)
                 } else {
-                    console.log(error)
+                    console.error(error)
                 }
             })
     }, [])
