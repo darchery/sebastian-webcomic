@@ -8,6 +8,11 @@ export default function Home() {
     const [news, setNews] = useState([]);
     const [character, setCharacter] = useState();
 
+    const [loading, setLoading] = useState(true) // Empieza cargando
+    const [error, setError] = useState(null)
+    const errorMessage = 'No se pudieron cargar los datos. Inténtelo más tarde.'
+
+
     useEffect(() => {
         supabase
             .from('news_posts')
@@ -18,8 +23,10 @@ export default function Home() {
                 if (!error) {
                     setNews(data)
                 } else {
+                    setError(errorMessage)
                     console.error(error);
-                } 
+                }
+                setLoading(false) 
             })
         supabase
             .from('characters')
@@ -29,10 +36,20 @@ export default function Home() {
                     const randomCharacter = data[Math.floor(Math.random() * data.length)];
                     setCharacter(randomCharacter)
                 } else {
+                    setError(errorMessage)
                     console.error(error)
                 }
+                setLoading(false)
             })
     }, [])
+
+    if (loading) return <p className="spinner"></p>
+    if (error) return (
+        <div>
+            <p className="empty-text">{error}</p>
+            <button className="btn" onClick={() => window.location.reload()}>Reintentar</button>
+        </div>
+    )
 
     return(
         <>
@@ -136,7 +153,7 @@ export default function Home() {
                             </div>
                         </div>
                     ) : (
-                        <p className="empty-text">No hay personajes aun</p>
+                        <p className="empty-text">No hay personajes aún.</p>
                     )}
                 </section>
                 <br />
@@ -144,7 +161,7 @@ export default function Home() {
                 <section className="home-section">
                     <h2>Ultimas Novedades</h2>
                     {news.length === 0 ? (
-                        <p className="empty-text">No hay novedades aún</p>
+                        <p className="empty-text">No hay novedades aún.</p>
                     ) : (
                         <div className="news-preview">
                             {

@@ -7,6 +7,14 @@ export default function Comic() {
     const [pages, setPages] = useState([])
     const topRef = useRef(null)
 
+    const [loadingChapters, setLoadingChapters] = useState(true) // Empieza cargando
+    const [loadingPages, setLoadingPages] = useState(true) // Empieza cargando
+
+    const [error, setError] = useState(null)
+    const errorMessageChapter = 'No se pudieron cargar los capítulos. Inténtelo más tarde.'
+    const errorMessagePages = 'No se pudieron cargar las páginas. Inténtelo más tarde.'
+
+
     // 1 fetch: capítulos al montar
     useEffect(() => {
         supabase
@@ -20,8 +28,10 @@ export default function Comic() {
                         setSelectedChapter(data[0])
                     }
                 } else {
+                    setError(errorMessageChapter)
                     console.error(error)
                 }
+                setLoadingChapters(false) 
             })
     }, [])
 
@@ -37,8 +47,10 @@ export default function Comic() {
                 if (!error) {
                     setPages(data)
                 } else {
+                    setError(errorMessagePages)
                     console.error(error)
                 }
+                setLoadingPages(false)
             })
     }, [selectedChapter])
 
@@ -46,8 +58,17 @@ export default function Comic() {
     const handleChange = (e) => {
         const ch = chapters.find(c => c.id === e.target.value)
         setSelectedChapter(ch)
+        setLoadingPages(true)
         topRef.current?.scrollIntoView()
     }
+
+    if (loadingChapters) return <p className="spinner"></p>
+    if (error) return (
+        <div>
+            <p className="empty-text">{error}</p>
+            <button className="btn" onClick={() => window.location.reload()}>Reintentar</button>
+        </div>
+    )
 
     return (
         <div className='comic-reader' ref={topRef}>
@@ -65,34 +86,34 @@ export default function Comic() {
                     }
                 </select>
             </div>
-
-            {/* Páginas apiladas verticalmente: sólo scroll*/}
-            {
-                pages.length > 0 ?
-                (
-                    <div className='page-scroll'>
-                        {
-                            pages.map(p => (
-                                <img 
-                                    key={p.id}
-                                    src={p.image_url}
-                                    alt={`Página ${p.page_number}`}
-                                    className='comic-page'
-                                >
-                                </img>
-                            ))
-                        }
-                    </div>
-                )
-                :
-                (
-                    <p className="empty-text">
-                        {
-                            selectedChapter ? 'No hay páginas disponibles'
-                            : 'Selecciona un capítulo'
-                        }
-                    </p>
-                )
+             {
+                    loadingPages ? (
+                        <p className='spinner'></p>
+                    ) : pages.length > 0 ? (
+                        <>
+                            {/* Páginas apiladas verticalmente: sólo scroll*/}
+                            <div className='page-scroll'>
+                                {
+                                    pages.map(p => (
+                                        <img 
+                                            key={p.id}
+                                            src={p.image_url}
+                                            alt={`Página ${p.page_number}`}
+                                            className='comic-page'
+                                        >
+                                        </img>
+                                    ))
+                                }
+                            </div>
+                        </>
+                    ) : (
+                        <p className="empty-text">
+                            {
+                                selectedChapter ? 'No hay páginas disponibles'
+                                : 'Selecciona un capítulo'
+                            }
+                        </p>
+                    )
             }
         </div>
     )

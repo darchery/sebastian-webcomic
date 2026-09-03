@@ -4,6 +4,11 @@ import { supabase } from "../lib/supabaseClient"
 export default function News() {
     const [news, setNews] = useState([])
 
+    const [loading, setLoading] = useState(true) // Empieza cargando
+    const [error, setError] = useState(null)
+    const errorMessage = 'No se pudieron cargar las novedades. Inténtelo más tarde.'
+
+
     useEffect(() => {
         supabase
             .from('news_posts')
@@ -13,10 +18,20 @@ export default function News() {
                 if (!error) {
                     setNews(data)
                 } else {
+                    setError(errorMessage)
                     console.error(error)
                 }
+                setLoading(false)
             })
     }, [])
+
+    if (loading) return <p className="spinner"></p>
+    if (error) return (
+        <div>
+            <p className="empty-text">{error}</p>
+            <button className="btn" onClick={() => window.location.reload()}>Reintentar</button>
+        </div>
+    )
 
     return (
         <div className="content">

@@ -5,6 +5,11 @@ import CharacterCard from "../components/CharacterCard"
 export default function Characters() {
     const [characters, setCharacters] = useState([])
 
+    const [loading, setLoading] = useState(true) // Empieza cargando
+    const [error, setError] = useState(null)
+    const errorMessage = 'No se pudieron cargar los personajes. Inténtelo más tarde.'
+
+
     useEffect(() => {
         supabase
             .from('characters')
@@ -12,13 +17,22 @@ export default function Characters() {
             .order('name', {ascending: false})
             .then(({ data, error }) => {
                 if (error) {
+                    setError(errorMessage)
                     console.error(error)
                 } else {
                     setCharacters(data)
                 }
-            }
-            )
+                setLoading(false) 
+            })
     }, [])
+
+    if (loading) return <p className="spinner"></p>
+    if (error) return (
+        <div>
+            <p className="empty-text">{error}</p>
+            <button className="btn" onClick={() => window.location.reload()}>Reintentar</button>
+        </div>
+    )
 
     return (
         <div className="content">

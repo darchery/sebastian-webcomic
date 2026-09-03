@@ -4,6 +4,11 @@ import { supabase } from "../lib/supabaseClient";
 export default function Downloads() {
     const [downloads, setDownloads] = useState([])
 
+    const [loading, setLoading] = useState(true) // Empieza cargando
+    const [error, setError] = useState(null)
+    const errorMessage = 'No se pudieron cargar los descargables. Inténtelo más tarde.'
+
+
     useEffect(() => {
         supabase
             .from('downloads')
@@ -14,8 +19,10 @@ export default function Downloads() {
                 if (!error) {
                     setDownloads(data)
                 } else {
+                    setError(errorMessage)
                     console.error(error)
                 }
+                setLoading(false) 
             })
         }, [])
     
@@ -48,6 +55,14 @@ export default function Downloads() {
         a.click()
         document.body.removeChild(a)
     }
+
+    if (loading) return <p className="spinner"></p>
+    if (error) return (
+        <div>
+            <p className="empty-text">{error}</p>
+            <button className="btn" onClick={() => window.location.reload()}>Reintentar</button>
+        </div>
+    )
 
     return (
         <div className="content">

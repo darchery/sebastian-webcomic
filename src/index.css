@@ -62,6 +62,7 @@ button {
     font-family: var(--font-heading);
     color: var(--accent);
     text-align: center;
+    margin-bottom: 1rem;
 }
 
 /* Navbar */
@@ -97,6 +98,7 @@ button {
     list-style: none;
     gap: 2rem;
     font-size: 1.5rem;
+    overflow: hidden;
 }
 .navbar-links a {
     color: var(--text-primary);
@@ -137,6 +139,11 @@ button {
     .navbar-links.open {
         display: flex;
     }
+}
+/* Reducción intermedia para evitar que los links del navbar se salgan del navbar */
+@media (max-width: 1024px) {
+    .navbar-logo { font-size: 3rem; }  
+    .navbar-links { gap: 1rem; font-size: 1.2rem; }
 }
 /* Navbar */
 
@@ -404,7 +411,7 @@ button {
 
 .download-card img {
     width: 100%;
-    height: 200px;
+    height: 250px;
     object-fit: cover;
 }
 
@@ -500,9 +507,6 @@ button {
     margin-bottom: 1rem;
 }
 
-.donate-info ul {
-}
-
 /* Donate */
 
 /* Lector del cómic */
@@ -558,3 +562,18 @@ button {
   display: block;
 }
 */
+
+/* Spinner de carga */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--bg-card);
+    border-top: 4px solid var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 2rem auto;
+}
