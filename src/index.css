@@ -243,6 +243,10 @@ button {
   margin-bottom: 1.5rem;
 }
 
+.btn-leer-comic {
+    padding: 1.5rem;
+    font-size: 1.4rem;
+}
 
 .home-section h2 {
   font-family: var(--font-heading);
@@ -342,14 +346,11 @@ button {
 
 .character-bio {
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* Máximo 3 líneas*/
     -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
     overflow: hidden;
 }
 
-.character-bio.expanded {
-    -webkit-line-clamp: unset; 
-}
 
 .characters-grid {
     display: grid;
@@ -576,4 +577,69 @@ button {
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
     margin: 2rem auto;
+}
+
+/* Character page */
+.character-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.character-profile {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--radius);
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.character-profile-img {
+    width: 200px;
+    border-radius: var(--radius);
+    object-fit: cover;
+}
+
+.character-profile-info h1 {
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+.character-phrase {
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.character-bio-full {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--radius);
+}
+
+.character-bio-full h2 {
+    font-family: var(--font-heading);
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .character-profile {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .character-profile h1 {
+        text-align: center;
+    }
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: var(--accent);
+    text-decoration: none;
 }

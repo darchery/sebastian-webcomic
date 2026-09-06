@@ -14,7 +14,7 @@ export default function Characters() {
         supabase
             .from('characters')
             .select('*')
-            .order('name', {ascending: false})
+            .order('order', {ascending: true})
             .then(({ data, error }) => {
                 if (error) {
                     setError(errorMessage)

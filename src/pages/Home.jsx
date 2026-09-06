@@ -63,7 +63,7 @@ export default function Home() {
                     <h2 className="hero-title">Sebastián</h2>
                     <br />
                     <p className="hero-subtitle">Un demonio normal y corriente viviendo en el infierno.</p>
-                    <NavLink to="/comic" className="btn">Leer Comic</NavLink>
+                    <NavLink to="/comic" className="btn btn-leer-comic">Leer Comic</NavLink>
                 </section>
                 <br />
                 <section className="home-section">
@@ -148,7 +148,7 @@ export default function Home() {
                             <img src={character.image_url} alt={character.name} />
                             <div>
                             <h3>{character.name}</h3>
-                            <p>{character.bio}</p>
+                            <p>{character.short_phrase}</p>
                             <NavLink to="/characters" className="btn">Ver todos</NavLink>
                             </div>
                         </div>

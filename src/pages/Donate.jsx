@@ -62,7 +62,7 @@ export default function Donate() {
                             <li>Ilustraciones exclusivas para descarga</li>
                         </ul>
                     </div>
-                    <img className="img-donacion" src="https://sxpjkvdcgsdzncoljzkx.supabase.co/storage/v1/object/public/wallpapers/sebastian-oficina.webp" alt="Foto de Sebastián trabjando en la oficina" />
+                    <img className="img-donacion" src="https://sxpjkvdcgsdzncoljzkx.supabase.co/storage/v1/object/public/wallpapers/downloads/sebastian-oficina.webp" alt="Foto de Sebastián trabjando en la oficina" />
                 </div>
             </div>
         </>
