@@ -32,7 +32,7 @@ export default function CharacterPage() {
 
     return (
         <div className="content character-page">
-            <Link to="/characters" className="back-link">← Volver a Personajes</Link>
+            <Link to="/characters" className="back-link btn">← Volver a Personajes</Link>
 
             <div className="character-profile">
                 <img src={character.image_url} alt={character.name} className="character-profile-img"/>

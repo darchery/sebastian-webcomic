@@ -626,6 +626,10 @@ button {
     margin-bottom: 1rem;
 }
 
+.character-bio-full p {
+    white-space: pre-wrap;
+}
+
 @media (max-width: 768px) {
     .character-profile {
         flex-direction: column;
@@ -640,6 +644,41 @@ button {
 .back-link {
     display: inline-block;
     margin-bottom: 1rem;
-    color: var(--accent);
     text-decoration: none;
 }
+
+/* Comic selector*/
+.chapters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
+    gap: 2rem;
+    justify-content: center;
+}
+
+.chapter-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.chapter-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px var(--accent);
+}
+
+.chapter-card img {
+    width: 100%;
+    /*aspect-ratio: 3 / 4; Portadas a 3/4 -> atmoment no necesario*/
+    object-fit: cover;
+    display: block;
+}
+
+.chapter-card-title {
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    text-align: center;
+}
+

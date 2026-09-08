@@ -1,7 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 export default function Comic() {
+    const { id } = useParams()
+    const navigate = useNavigate()
+
     const [chapters, setChapters] = useState([])
     const [selectedChapter, setSelectedChapter] = useState(null)
     const [pages, setPages] = useState([])
@@ -14,9 +18,9 @@ export default function Comic() {
     const errorMessageChapter = 'No se pudieron cargar los capítulos. Inténtelo más tarde.'
     const errorMessagePages = 'No se pudieron cargar las páginas. Inténtelo más tarde.'
 
-
     // 1 fetch: capítulos al montar
     useEffect(() => {
+        setLoadingPages(true)
         supabase
             .from('chapters')
             .select('*')
@@ -25,7 +29,8 @@ export default function Comic() {
                 if (!error) {
                     setChapters(data)
                     if (data.length > 0) {
-                        setSelectedChapter(data[0])
+                        const targetChapter = (id && data.find(d => d.id === id)) || (data[0])
+                        setSelectedChapter(targetChapter)
                     }
                 } else {
                     setError(errorMessageChapter)
@@ -33,11 +38,13 @@ export default function Comic() {
                 }
                 setLoadingChapters(false) 
             })
-    }, [])
+    }, [id])
 
     // 2 fetch: cargar las páginas del capítulo
     useEffect(() => {
         if (!selectedChapter) return
+        setLoadingPages(true)
+        if (selectedChapter.id !== id) navigate(`/comic/${selectedChapter.id}`) // Sincroniza URL
         supabase
             .from('comic_pages')
             .select('*')
@@ -59,7 +66,7 @@ export default function Comic() {
         const ch = chapters.find(c => c.id === e.target.value)
         setSelectedChapter(ch)
         setLoadingPages(true)
-        topRef.current?.scrollIntoView()
+        navigate(`/comic/${ch.id}`)
     }
 
     if (loadingChapters) return <p className="spinner"></p>
@@ -69,14 +76,21 @@ export default function Comic() {
             <button className="btn" onClick={() => window.location.reload()}>Reintentar</button>
         </div>
     )
+    if (!selectedChapter) return <p className='empty-text'>No hay capítulos disponibles</p>
 
     return (
-        <div className='comic-reader' ref={topRef}>
+        <div className='comic-reader content' ref={topRef}>
+            <Link to="/comic" className="btn back-link">← Volver al índice</Link>
             <h1 className='page-title'>Cómic</h1>
 
             <div className='chapter-selector'>
                 <label htmlFor="chapter">Capítulo: </label>
-                <select value={selectedChapter?.id || ''} onChange={handleChange} name="chapter" id="chapter">
+                <select 
+                    value={selectedChapter?.id || ''} 
+                    onChange={handleChange} 
+                    name="chapter" 
+                    id="chapter"
+                >
                     {
                         chapters.map(ch => (
                             <option key={ch.id} value={ch.id}>

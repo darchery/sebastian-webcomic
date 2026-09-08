@@ -4,7 +4,7 @@ import { NavLink, useLocation } from "react-router-dom";
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false)
     const location = useLocation()
-    const isComic = location.pathname === '/comic'
+    const isComic = location.pathname.startsWith('/comic/')
 
     return(
         <nav className={`navbar ${isComic ? 'on-comic' : ''}`}>

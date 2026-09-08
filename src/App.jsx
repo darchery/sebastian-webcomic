@@ -8,6 +8,7 @@ import Donate from './pages/Donate'
 import Layout from './components/Layout'
 import Page404 from './pages/Page404'
 import CharacterPage from './pages/CharacterPage'
+import ComicSelector from './pages/ComicSelector'
 
 export default function App() {
   return (
@@ -15,12 +16,14 @@ export default function App() {
       <Routes>
         <Route element={<Layout></Layout>}>
           <Route path="/" element={<Home />} />
-          <Route path="/comic" element={<Comic />} />
+          <Route path="/comic" element={<ComicSelector />} />
           <Route path="/characters" element={<Characters />} />
           <Route path="/news" element={<News />} />
           <Route path="/downloads" element={<Downloads />} />
           <Route path="/donate" element={<Donate />} />
+
           <Route path="/characters/:id" element={<CharacterPage />} />
+          <Route path="/comic/:id" element={<Comic />} />
 
           <Route path="*" element={<Page404 />} />
         </Route>
