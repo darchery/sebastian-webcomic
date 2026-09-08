@@ -54,6 +54,7 @@ export default function Donate() {
                             Paypal
                         </a>
                     </div>
+                    <img className="img-donacion" src="https://sxpjkvdcgsdzncoljzkx.supabase.co/storage/v1/object/public/wallpapers/imagen-donaciones.webp" alt="Foto de Sebastián trabjando en la oficina" />
                     <div className="donate-info">
                         <h3>¿Para que se usa?</h3>
                         <ul>
@@ -62,7 +63,6 @@ export default function Donate() {
                             <li>Ilustraciones exclusivas para descarga</li>
                         </ul>
                     </div>
-                    <img className="img-donacion" src="https://sxpjkvdcgsdzncoljzkx.supabase.co/storage/v1/object/public/wallpapers/downloads/sebastian-oficina.webp" alt="Foto de Sebastián trabjando en la oficina" />
                 </div>
             </div>
         </>

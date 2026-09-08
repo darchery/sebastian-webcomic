@@ -8,7 +8,7 @@ export default function Navbar() {
 
     return(
         <nav className={`navbar ${isComic ? 'on-comic' : ''}`}>
-            <NavLink to="/" className="navbar-logo">Sebastián</NavLink>
+            <NavLink to="/" className="navbar-logo"><img src="https://sxpjkvdcgsdzncoljzkx.supabase.co/storage/v1/object/public/wallpapers/letras-titulo.webp" alt="COSAS DEL MÁS ALLÁ" /></NavLink>
             
             <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>&#9776;</button>
             

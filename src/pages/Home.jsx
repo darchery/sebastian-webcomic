@@ -54,13 +54,10 @@ export default function Home() {
     return(
         <>
             <div className="content home">
-                <section className="page-title">
-                    <h1>COSAS DEL MAS ALLÁ con JULIO y SEBASTIÁN</h1>
-                </section>
                 <br />
                 {/* HERO */}
                 <section className="hero">
-                    <h2 className="hero-title">Sebastián</h2>
+                    <h2 className="hero-title">COSAS DEL MAS ALLÁ</h2>
                     <br />
                     <p className="hero-subtitle">Un demonio normal y corriente viviendo en el infierno.</p>
                     <NavLink to="/comic" className="btn btn-leer-comic">Leer Comic</NavLink>
@@ -93,7 +90,7 @@ export default function Home() {
                         <br />
                         <p>
                         Gracias por confiar en este proyecto y por dedicarle un poco de tu tiempo. Espero sinceramente 
-                            que te guste <b>Sebastián/Cosas del más allá</b>, y que disfrutes leyendo sus historias tanto como yo me divierto creándolas.
+                            que te guste <b>Cosas del más allá</b>, y que disfrutes leyendo sus historias tanto como yo me divierto creándolas.
                         </p>
                     </div>
                 </section>
