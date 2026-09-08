@@ -1,53 +1,74 @@
-# Sebastián Comic Web
+# Cosas del más allá — Webcomic
 
-Página web del cómic de **Sebastián**, un demonio normal viviendo en el inframundo junto a su amigo Julio. Cómic animado, cómico y con tono adulto.
+Web del cómic **Cosas del más allá**: una comedia absurda sobre un funcionario del Infierno cuya vida cotidiana acaba llevándolo a relacionarse con demonios, muertos, personajes históricos y figuras celestiales.
 
 ## Funcionalidades
 
-- **Leer el cómic online** — capítulo a capítulo, con páginas apiladas con scroll continuo
-- **Conocer a los personajes** — tarjetas con biografía, edad e imagen, con bio desplegable al hacer clic
-- **Descargar wallpapers e ilustraciones** — las imágenes se descargan en PNG automáticamente
-- **Leer noticias y novedades del autor** — feed de novedades desde Supabase
+- **Leer el cómic online** — índice de capítulos con portada + lector con scroll continuo (estilo manga/webtoon)
+- **Conocer a los personajes** — grid de tarjetas + ficha individual por personaje (biografía, especie, edad, trabajo)
+- **Descargar wallpapers e ilustraciones** — imágenes descargables en PNG
+- **Leer noticias y novedades** — feed de novedades desde Supabase
 - **Donar vía Ko-fi o PayPal**
+- **Página 404** personalizada
+- **Estados de carga y error** en todas las páginas con fetch
+- **Navbar responsive** — logo con imagen, menú hamburguesa en móvil
 
 ## Stack
 
 - **React + Vite** — frontend
-- **React Router DOM** — navegación entre páginas
-- **Supabase** — base de datos (PostgreSQL) + storage de imágenes
+- **React Router DOM** — navegación entre páginas (rutas dinámicas)
+- **Supabase** — base de datos (PostgreSQL) + storage de imágenes + auth
 - **CSS vanilla** — estilos con custom properties, sin framework
 - **Vercel** — hosting y despliegue automático
 
 ## Estructura
 
 ```
-comic-web-project/
+sebastian-webcomic/
+├── public/
+│   └── favicon.png             Icono de pestaña
 ├── src/
-│   ├── components/     Navbar, Footer, Layout, CharacterCard, DonationLink
-│   ├── pages/          Home, Comic, Characters, News, Downloads, Donate
-│   ├── lib/            Conexión Supabase
-│   └── index.css       Estilos globales (tema rosa/claro)
+│   ├── components/
+│   │   ├── Navbar.jsx          Barra de navegación (logo imagen + responsive)
+│   │   ├── Footer.jsx          Pie de página
+│   │   ├── Layout.jsx          Layout global (Navbar + Footer)
+│   │   ├── CharacterCard.jsx   Tarjeta de personaje (Link a ficha)
+│   │   └── DonationLink.jsx    Enlaces de donación (Ko-fi / PayPal)
+│   ├── pages/
+│   │   ├── Home.jsx            Inicio (hero, spotlight, secciones)
+│   │   ├── Comic.jsx           Lector de cómic (select + páginas)
+│   │   ├── ComicSelector.jsx   Índice de capítulos (grid con portadas)
+│   │   ├── Characters.jsx      Grid de personajes
+│   │   ├── CharacterPage.jsx   Ficha individual de personaje
+│   │   ├── News.jsx            Noticias y novedades
+│   │   ├── Downloads.jsx       Descargables (wallpapers)
+│   │   ├── Donate.jsx          Donaciones (Ko-fi / PayPal)
+│   │   └── Page404.jsx         Página no encontrada
+│   ├── lib/
+│   │   └── supabaseClient.js   Conexión a Supabase
+│   ├── App.jsx                 Rutas
+│   ├── main.jsx                Entry point
+│   └── index.css               Estilos globales (tema rosa/claro)
 ├── index.html
 └── package.json
 ```
 
 ## Decisiones de diseño
 
-- **Tema rosa/claro** con acentos rojos (variables en `index.css`)
-- **Lector de cómic en scroll continuo** (estilo manga/webtoon) en lugar de visor página a página
-- **Página de personajes en grid** (4 columnas en escritorio, apiladas en móvil) con bio desplegable
-- **Navbar adaptado a la página Comic** (se desliza y no queda fijo en el lector)
+- **Tema rosa/claro** con acentos rojos (variables CSS en `index.css`)
+- **Logo con imagen** (no texto) en el navbar, con height responsivo
+- **Lector de cómic en scroll continuo** (estilo manga/webtoon)
+- **Grid de capítulos** con portada antes del lector
+- **Ficha de personaje** con imagen completa, frase, especie, edad y bio
+- **Navbar sticky** que se desliza en el lector de cómic
+- **Sin gradientes** (preferencia del autor)
 
 ## Estado actual
 
-- ✅ Home, Personajes, Noticias, Descargas, Donar
-- ⏳ Cómic (lector manga) — en desarrollo
-- 🔧 Pendientes: página de Ko-fi y paypal del artista
-
-## Contribuir
-
-1. Fork el repositorio
-2. Crea una rama (`git checkout -b mi-feature`)
-3. Haz commit (`git commit -m "añadir feature"`)
-4. Push a la rama (`git push origin mi-feature`)
-5. Abre un Pull Request
+- ✅ Home, Personajes (grid + ficha), Noticias, Descargas, Donar
+- ✅ Cómic: índice de capítulos + lector con selección por URL
+- ✅ Página 404, loading/error en todas las páginas
+- ✅ Navbar responsive con logo imagen
+- ✅ Favicon
+- ⏳ Panel de estadísticas
+- ⏳ Deploy en Vercel
