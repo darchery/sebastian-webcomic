@@ -408,6 +408,12 @@ button {
     background: var(--bg-card);
     border-radius: var(--radius);
     overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.download-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px var(--accent);
 }
 
 .download-card img {
