@@ -1,27 +1,33 @@
 :root {
-  --bg-primary: #eeb4be;      /* rojo oscuro rosita, fondo principal */
-  --bg-secondary: #a88187;    /* rojo claro un poco mas claro */
-  --bg-card: #cea2a9;
-  --accent: #8b1a1a;          /* rojo oscuro, color principal de acento */
-  --accent-hover: #ff4d5a;    /* rojo brillante, color de acento al pasar el mouse */
-  --text-primary: #1a1a1a;    /* negro, texto principal */
-  --text-secondary: #3f2424;  /* rojo oscuro apagado, texto secundario */
-  --font-main: 'Outfit', sans-serif;
-  --font-heading: 'Bangers', sans-serif; 
-  --radius: 5px;
+    --bg-primary: #eeb4be;
+    /* rojo oscuro rosita, fondo principal */
+    --bg-secondary: #a88187;
+    /* rojo claro un poco mas claro */
+    --bg-card: #cea2a9;
+    --accent: #8b1a1a;
+    /* rojo oscuro, color principal de acento */
+    --accent-hover: #ff4d5a;
+    /* rojo brillante, color de acento al pasar el mouse */
+    --text-primary: #1a1a1a;
+    /* negro, texto principal */
+    --text-secondary: #3f2424;
+    /* rojo oscuro apagado, texto secundario */
+    --font-main: 'Outfit', sans-serif;
+    --font-heading: 'Bangers', sans-serif;
+    --radius: 5px;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: var(--font-main);
-  line-height: 1.6;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    line-height: 1.6;
 }
 
 a {
@@ -39,9 +45,12 @@ button {
 }
 
 .content {
-    max-width: 800px;      /* opcional: limita el ancho de lectura en pantallas grandes */
-    margin: 0 auto;         /* centra el bloque si usas max-width */
-    padding: 0 1.75rem;      /* esto es lo que te separa del borde de la pantalla */
+    max-width: 800px;
+    /* opcional: limita el ancho de lectura en pantallas grandes */
+    margin: 0 auto;
+    /* centra el bloque si usas max-width */
+    padding: 0 1.75rem;
+    /* esto es lo que te separa del borde de la pantalla */
     font-size: 1.20rem;
     text-align: center;
 }
@@ -75,7 +84,8 @@ button {
     position: sticky;
     top: 0;
     z-index: 1;
-    margin-bottom: 3rem; /* espacio entre la barra y el contenido */
+    margin-bottom: 3rem;
+    /* espacio entre la barra y el contenido */
     border: 1px solid #333;
     transition: transform 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
 }
@@ -106,12 +116,15 @@ button {
     font-size: 1.5rem;
     overflow: hidden;
 }
+
 .navbar-links a {
     color: var(--text-primary);
     text-decoration: none;
     transition: color 0.2s linear;
 }
-.navbar-links a:hover, .navbar-links a.active {
+
+.navbar-links a:hover,
+.navbar-links a.active {
     color: var(--accent);
 }
 
@@ -309,8 +322,7 @@ button {
     gap: 1rem;
 }
 
-/* USADO DE FORMA GLOBAL PARA CADA SECCIÓN DE TEXTO*/
-.news-card {
+.text-card {
     background: var(--bg-card);
     padding: 1.5rem;
     border-radius: var(--radius);
@@ -355,7 +367,8 @@ button {
 
 .character-info h3 {
     font-family: var(--font-heading);
-    color: var(--accent); /* TODO: ROJO o NEGRO*/
+    color: var(--accent);
+    /* TODO: ROJO o NEGRO*/
 }
 
 .character-age {

@@ -6,7 +6,7 @@ export default function Page404() {
     return (
         <div className="content">
             <h1 className="page-title">404 - Página no encontrada</h1>
-            <p className="news-card">
+            <p className="text-card">
                 La URL solicitada <i><b>{location.pathname}</b></i> no ha sido encontrada en este servidor.
             </p>
         </div>

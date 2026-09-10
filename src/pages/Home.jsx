@@ -65,7 +65,7 @@ export default function Home() {
                 <br />
                 <section className="home-section">
                     <h2>Introducción</h2>
-                    <div className="news-card">
+                    <div className="text-card">
                         <p>
                             Hola, querido lector. Soy <b>Dani</b>, y bienvenido a mi proyecto.
                         </p>
@@ -98,7 +98,7 @@ export default function Home() {
                 <section className="home-section">
                     {/* Párrafo de las disculpas-disclaimer*/}
                     <h2>Disclaimer</h2>
-                    <div className="news-card">
+                    <div className="text-card">
                         <p>
                             Una pequeña aclaración legislativa: Esta historia es <b>completamente ficticia</b> y está hecha con <b>intención humorística</b>.
                             No pretendo representar fielmente la realidad ni tengo intención de ofender a ningún individuo, colectivo,
@@ -114,7 +114,7 @@ export default function Home() {
                 <br />
                 <section className="home-section">
                     <h2>¿Cómo apoyar el proyecto?</h2>
-                    <div className="news-card">
+                    <div className="text-card">
                         <p>
                             La mayoría del contenido será gratuito, tanto las ilustraciones alternativas, wallpapers e
                             incluso la mayoría del contenido del cómic.
@@ -126,7 +126,7 @@ export default function Home() {
                 </section>
                 <br />
                 <section className="home-section">
-                    <div className="news-card">
+                    <div className="text-card">
                         <p className="dani">
                             <b>Gracias por estar aquí y espero que disfrutes de la historia.</b>
                         </p>
@@ -163,15 +163,15 @@ export default function Home() {
                         <div className="news-preview">
                             {
                                 news.map(post => (
-                                    <div key={post.id} className="news-card">
+                                    <div key={post.id} className="text-card">
                                         <h3>{post.title}</h3>
                                         <p className="news-date">
                                             {new Date(post.created_at).toLocaleDateString('es-ES')}
                                         </p>
                                         <p>{post.content?.slice(0, 150)}{post.content?.length > 150 && '...'}</p>
-                                    <br/>
+                                        <br />
                                     </div>
-                                    )
+                                )
                                 )
                             }
                         </div>

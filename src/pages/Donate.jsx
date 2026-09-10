@@ -3,12 +3,12 @@ import DonationLink from "../components/DonationLink"
 export default function Donate() {
 
     return (
-        <>  
+        <>
             <div className="content">
                 <div className="donate-page">
                     <h1 className="page-title">Apoya el proyecto</h1>
-                     <br />
-                    <div className="donate-intro news-card">
+                    <br />
+                    <div className="donate-intro text-card">
                         <section>
                             <p>
                                 Hola! Muchas gracias por acercarte a la zona de donativos.
@@ -25,7 +25,7 @@ export default function Donate() {
                         <section>
                             <p>
                                 Contamos con el servicio de <DonationLink name="kofi"></DonationLink>, en el cual disponemos
-                                de donativos y servicios de membresía, que contará con ilustraciones exclusivas para 
+                                de donativos y servicios de membresía, que contará con ilustraciones exclusivas para
                                 miembros y contenido del cómic anticipado.
                             </p>
                         </section>
@@ -37,7 +37,7 @@ export default function Donate() {
                         </section>
                     </div>
                     <div className="donate-buttons">
-                        <a 
+                        <a
                             href="https://ko-fi.com/TU_USUARIO"
                             target="_blank"
                             rel="noopener"
@@ -45,7 +45,7 @@ export default function Donate() {
                         >
                             Ko-fi
                         </a>
-                        <a 
+                        <a
                             href="https://www.paypal.com/donate/?hosted_button_id=LHU9A3BDUCQRC"
                             target="_blank"
                             rel="noopener"
