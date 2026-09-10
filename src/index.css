@@ -93,7 +93,7 @@ button {
 }
 
 .navbar-logo img {
-    height: 11rem;
+    height: 10rem;
     object-fit: contain;
     width: auto;
 }
@@ -121,7 +121,7 @@ button {
     background: none;
     border: none;
     color: var(--text-primary);
-    font-size: 2rem;
+    font-size: 1.65rem;
     cursor: pointer;
 }
 
@@ -142,18 +142,28 @@ button {
         padding: 1rem 2.5rem;
     }
 
-    .navbar-logo img { height: 7rem;}
+    .navbar-logo img {
+        height: 6rem;
+    }
 
 
     .navbar-links.open {
         display: flex;
     }
 }
+
 /* Reducción intermedia para evitar que los links del navbar se salgan del navbar */
 @media (max-width: 1024px) {
-    .navbar-logo img { height: 9rem;}
-    .navbar-links { gap: 1rem; font-size: 1.2rem; }
+    .navbar-logo img {
+        height: 8rem;
+    }
+
+    .navbar-links {
+        gap: 1rem;
+        font-size: 1.2rem;
+    }
 }
+
 /* Navbar */
 
 /* Footer */
@@ -243,13 +253,13 @@ button {
 }
 
 .btn:hover {
-  background: var(--accent-hover);
-  color: var(--accent);
+    background: var(--accent-hover);
+    color: var(--accent);
 }
 
 /* Secciones de la página de inicio */
 .home-section {
-  margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .btn-leer-comic {
@@ -258,10 +268,10 @@ button {
 }
 
 .home-section h2 {
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: var(--accent);
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
 }
 
 
@@ -282,14 +292,14 @@ button {
 }
 
 @media (max-width: 768px) {
-  .spotlight {
-    flex-direction: column;
-    text-align: center;
-  }
+    .spotlight {
+        flex-direction: column;
+        text-align: center;
+    }
 
-  .hero-title {
-    font-size: 2.5rem;
-  }
+    .hero-title {
+        font-size: 2.5rem;
+    }
 }
 
 /* News */
@@ -307,8 +317,8 @@ button {
 }
 
 .news-date {
-  color: var(--text-secondary);
-  font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
 }
 
 .empty-text {
@@ -356,6 +366,7 @@ button {
 .character-bio {
     display: -webkit-box;
     -webkit-box-orient: vertical;
+    line-clamp: 3;
     -webkit-line-clamp: 3;
     overflow: hidden;
 }
@@ -485,7 +496,7 @@ button {
 }
 
 .kofi-btn {
-  background: var(--accent);
+    background: var(--accent);
 }
 
 .kofi-btn:hover {
@@ -494,7 +505,7 @@ button {
 }
 
 .paypal-btn {
-  background: #005ea6;
+    background: #005ea6;
 }
 
 .paypal-btn:hover {
@@ -552,7 +563,7 @@ button {
 }
 
 .page-scroll {
-    display:  flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
@@ -581,7 +592,9 @@ button {
 
 /* Spinner de carga */
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .spinner {
@@ -696,4 +709,3 @@ button {
     color: var(--text-primary);
     text-align: center;
 }
-
