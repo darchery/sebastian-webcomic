@@ -3,8 +3,8 @@ import { supabase } from "../lib/supabaseClient"
 import { Link } from "react-router-dom"
 
 export default function ComicSelector() {
-    const [chapters, setChapters] = useState()
-    const [loading, setLoading] = useState(true) 
+    const [chapters, setChapters] = useState([])
+    const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     const errorMessage = 'No se pudieron cargar los capítulos. Inténtelo más tarde.'
 
@@ -15,12 +15,12 @@ export default function ComicSelector() {
             .order('chapter_number')
             .then(({ data, error }) => {
                 if (!error) {
-                    setChapters(data)
+                    setChapters(data || [])
                 } else {
                     setError(errorMessage)
                     console.error(error)
                 }
-                setLoading(false) 
+                setLoading(false)
             })
     }, [])
 
@@ -35,14 +35,14 @@ export default function ComicSelector() {
                     <div className="chapters-grid">
                         {
                             chapters.map(c => (
-                                <Link 
-                                    key={c.id} 
+                                <Link
+                                    key={c.id}
                                     to={`/comic/${c.id}`}
                                     className="chapter-card"
                                 >
-                                    <img 
-                                        src={c.cover_image_url} 
-                                        alt={`Capítulo ${c.chapter_number}: ${c.title}`} 
+                                    <img
+                                        src={c.cover_image_url}
+                                        alt={`Capítulo ${c.chapter_number}: ${c.title}`}
                                     />
                                     <p className="chapter-card-title">
                                         {`Cap. ${c.chapter_number} - ${c.title}`}

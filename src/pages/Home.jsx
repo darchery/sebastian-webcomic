@@ -6,9 +6,11 @@ import { NavLink } from "react-router-dom";
 
 export default function Home() {
     const [news, setNews] = useState([]);
-    const [character, setCharacter] = useState();
+    const [character, setCharacter] = useState(null);
 
-    const [loading, setLoading] = useState(true) // Empieza cargando
+    const [loadingNews, setLoadingNews] = useState(true) // Empieza cargando
+    const [loadingCharacters, setLoadingCharacters] = useState(true) // Empieza cargando
+
     const [error, setError] = useState(null)
     const errorMessage = 'No se pudieron cargar los datos. Inténtelo más tarde.'
 
@@ -21,29 +23,30 @@ export default function Home() {
             .limit(3)
             .then(({ data, error }) => {
                 if (!error) {
-                    setNews(data)
+                    setNews(data || [])
                 } else {
                     setError(errorMessage)
                     console.error(error);
                 }
-                setLoading(false)
+                setLoadingNews(false)
             })
         supabase
             .from('characters')
             .select('*')
             .then(({ data, error }) => {
-                if (!error && data?.length) { // Verifica si data no es null/undefined y tiene al menos un elemento
-                    const randomCharacter = data[Math.floor(Math.random() * data.length)];
-                    setCharacter(randomCharacter)
+                if (!error) {
+                    if (data?.length > 0) { // Verifica si data no es null/undefined y tiene al menos un elemento
+                        const randomCharacter = data[Math.floor(Math.random() * data.length)];
+                        setCharacter(randomCharacter)
+                    }
                 } else {
                     setError(errorMessage)
                     console.error(error)
                 }
-                setLoading(false)
+                setLoadingCharacters(false)
             })
     }, [])
 
-    if (loading) return <p className="spinner"></p>
     if (error) return (
         <div>
             <p className="empty-text">{error}</p>
@@ -140,42 +143,50 @@ export default function Home() {
                 {/* CHARACTER SPOTLIGHT */}
                 <section className="home-section">
                     <h2>Conoce a los Personajes</h2>
-                    {character ? (
-                        <div className="spotlight">
-                            <img src={character.image_url} alt={character.name} />
-                            <div>
-                                <h3>{character.name}</h3>
-                                <p>{character.short_phrase}</p>
-                                <NavLink to="/characters" className="btn">Ver todos</NavLink>
+                    {
+                        loadingCharacters ? (
+                            <p className="spinner"></p>
+                        ) : character ? (
+                            <div className="spotlight">
+                                <img src={character.image_url} alt={character.name} />
+                                <div>
+                                    <h3>{character.name}</h3>
+                                    <p>{character.short_phrase}</p>
+                                    <NavLink to="/characters" className="btn">Ver todos</NavLink>
+                                </div>
                             </div>
-                        </div>
-                    ) : (
-                        <p className="empty-text">No hay personajes aún.</p>
-                    )}
+                        ) : (
+                            <p className="empty-text">No hay personajes aún.</p>
+                        )
+                    }
                 </section>
                 <br />
                 {/* NEWS */}
                 <section className="home-section">
                     <h2>Ultimas Novedades</h2>
-                    {news.length === 0 ? (
-                        <p className="empty-text">No hay novedades aún.</p>
-                    ) : (
-                        <div className="news-preview">
-                            {
-                                news.map(post => (
-                                    <div key={post.id} className="text-card">
-                                        <h3>{post.title}</h3>
-                                        <p className="news-date">
-                                            {new Date(post.created_at).toLocaleDateString('es-ES')}
-                                        </p>
-                                        <p>{post.content?.slice(0, 150)}{post.content?.length > 150 && '...'}</p>
-                                        <br />
-                                    </div>
-                                )
-                                )
-                            }
-                        </div>
-                    )}
+                    {
+                        loadingNews ? (
+                            <p className="spinner"></p>
+                        ) : news.length === 0 ? (
+                            <p className="empty-text">No hay novedades aún.</p>
+                        ) : (
+                            <div className="news-preview">
+                                {
+                                    news.map(post => (
+                                        <div key={post.id} className="text-card">
+                                            <h3>{post.title}</h3>
+                                            <p className="news-date">
+                                                {new Date(post.created_at).toLocaleDateString('es-ES')}
+                                            </p>
+                                            <p>{post.content?.slice(0, 150)}{post.content?.length > 150 && '...'}</p>
+                                            <br />
+                                        </div>
+                                    )
+                                    )
+                                }
+                            </div>
+                        )
+                    }
                 </section>
             </div>
         </>

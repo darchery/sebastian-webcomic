@@ -14,18 +14,18 @@ export default function Downloads() {
             .from('downloads')
             .select('*')
             .eq('public', true)
-            .order('created_at', {ascending: false})
+            .order('created_at', { ascending: false })
             .then(({ data, error }) => {
                 if (!error) {
-                    setDownloads(data)
+                    setDownloads(data || [])
                 } else {
                     setError(errorMessage)
                     console.error(error)
                 }
-                setLoading(false) 
+                setLoading(false)
             })
-        }, [])
-    
+    }, [])
+
     async function downloadAsPng(imgUrl, filename) {
         const img = new Image()
         img.crossOrigin = 'anonymous'
@@ -68,29 +68,29 @@ export default function Downloads() {
         <div className="content">
             <h1 className="page-title">Descargables</h1>
             {
-                downloads.length === 0 ? 
-                (
-                    <p className="empty-text">No hay descargables disponibles</p>
-                )
-                :
-                (
-                    <div className="downloads-grid">
-                        {
-                            downloads.map(d => (
-                                <div key={d.id} className="download-card">
-                                    <a href={d.image_url} target="_blank" rel="noopener">
-                                        <img src={d.image_url} alt={d.title} />
-                                    </a>
-                                    <div className="download-info">
-                                        <h3>{d.title}</h3>
-                                        <button className="btn" onClick={() => downloadAsPng(d.image_url, d.title)}>Descargar</button>
+                downloads.length === 0 ?
+                    (
+                        <p className="empty-text">No hay descargables disponibles</p>
+                    )
+                    :
+                    (
+                        <div className="downloads-grid">
+                            {
+                                downloads.map(d => (
+                                    <div key={d.id} className="download-card">
+                                        <a href={d.image_url} target="_blank" rel="noopener">
+                                            <img src={d.image_url} alt={d.title} />
+                                        </a>
+                                        <div className="download-info">
+                                            <h3>{d.title}</h3>
+                                            <button className="btn" onClick={() => downloadAsPng(d.image_url, d.title)}>Descargar</button>
+                                        </div>
                                     </div>
-                                </div>
-                            ))
-                        }
-                    </div>
+                                ))
+                            }
+                        </div>
 
-                )
+                    )
             }
         </div>
     )

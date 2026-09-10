@@ -14,15 +14,15 @@ export default function Characters() {
         supabase
             .from('characters')
             .select('*')
-            .order('order', {ascending: true})
+            .order('order', { ascending: true })
             .then(({ data, error }) => {
-                if (error) {
+                if (!error) {
+                    setCharacters(data || [])
+                } else {
                     setError(errorMessage)
                     console.error(error)
-                } else {
-                    setCharacters(data)
                 }
-                setLoading(false) 
+                setLoading(false)
             })
     }, [])
 
@@ -38,15 +38,15 @@ export default function Characters() {
         <div className="content">
             <h1 className="page-title">Personajes</h1>
             {
-                characters.length === 0 ? 
-                    (<p className="empty-text">No hay personajes disponibles</p>) 
+                characters.length === 0 ?
+                    (<p className="empty-text">No hay personajes disponibles</p>)
                     :
                     (<section>
                         <div className="characters-grid">
                             {
                                 characters.map(c => (
                                     <CharacterCard key={c.id} character={c}></CharacterCard>
-                                    )
+                                )
                                 )
                             }
                         </div>

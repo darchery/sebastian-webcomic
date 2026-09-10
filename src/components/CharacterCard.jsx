@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function CharacterCard({ character }) {
@@ -14,7 +13,7 @@ export default function CharacterCard({ character }) {
                         {character.short_phrase}
                     </p>
                 </div>
-            </div>        
+            </div>
         </Link>
-    )    
+    )
 }
