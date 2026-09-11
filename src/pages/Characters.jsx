@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { supabase } from "../lib/supabaseClient"
 import CharacterCard from "../components/CharacterCard"
+import useDocumentTitle from "../hooks/useDocumentTitle"
 
 export default function Characters() {
     const [characters, setCharacters] = useState([])
@@ -25,6 +26,8 @@ export default function Characters() {
                 setLoading(false)
             })
     }, [])
+
+    useDocumentTitle('Personajes')
 
     if (loading) return <p className="spinner"></p>
     if (error) return (

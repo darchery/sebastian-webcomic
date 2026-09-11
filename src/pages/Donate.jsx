@@ -1,7 +1,10 @@
 import DonationLink from "../components/DonationLink"
+import useDocumentTitle from "../hooks/useDocumentTitle"
 import { DONATION_URLS } from "../lib/constants"
 
 export default function Donate() {
+
+    useDocumentTitle('Apoya el proyecto')
 
     return (
         <>
@@ -12,7 +15,7 @@ export default function Donate() {
                     <div className="donate-intro text-card">
                         <section>
                             <p>
-                                Hola! Muchas gracias por acercarte a la zona de donativos.
+                                ¡Hola! Muchas gracias por acercarte a la zona de donativos.
                             </p>
                         </section>
                         <br />

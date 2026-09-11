@@ -6,12 +6,22 @@ export default function Navbar() {
     const location = useLocation()
     const isComic = location.pathname.startsWith('/comic/')
 
-    return(
+    return (
         <nav className={`navbar ${isComic ? 'on-comic' : ''}`}>
             <NavLink to="/" className="navbar-logo"><img src="https://sxpjkvdcgsdzncoljzkx.supabase.co/storage/v1/object/public/wallpapers/letras-titulo.webp" alt="COSAS DEL MÁS ALLÁ" /></NavLink>
-            
-            <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>&#9776;</button>
-            
+
+            <button
+                className="menu-toggle"
+                onClick={() => setMenuOpen(!menuOpen)}
+                /* Accesibilidad personas ciegas o con baja visión */
+                /* TallBack dice: Cerrar o Abrir menú de navegación (según opción) */
+                aria-label={menuOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
+                /* TallBack avisa al usuario si el botón hambubeguer está contraido o expandido */
+                aria-expanded={menuOpen}
+            >
+                &#9776;
+            </button>
+
             <ul className={`navbar-links ${menuOpen ? 'open' : ''}`}>
                 <li>
                     <NavLink to="/" end onClick={() => setMenuOpen(false)}>Inicio</NavLink>
@@ -24,7 +34,7 @@ export default function Navbar() {
                 </li>
                 <li>
                     <NavLink to="/downloads" end onClick={() => setMenuOpen(false)}>Descargables</NavLink>
-                </li> 
+                </li>
                 <li>
                     <NavLink to="/news" end onClick={() => setMenuOpen(false)}>Novedades</NavLink>
                 </li>

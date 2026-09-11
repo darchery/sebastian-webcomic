@@ -5,7 +5,12 @@ export default function CharacterCard({ character }) {
     return (
         <Link to={`/characters/${character.id}`} className="character-card-link">
             <div className="character-card">
-                <img src={character.busto_image_url} alt={character.name} />
+                <img
+                    src={character.busto_image_url}
+                    alt={character.name}
+                    loading="lazy"
+                    decoding="async"
+                />
                 <div className="character-info">
                     <h3>{character.name}</h3>
                     {character.age && <p className="character-age">Edad: {character.age}</p>}

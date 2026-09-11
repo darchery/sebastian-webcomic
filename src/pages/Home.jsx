@@ -63,7 +63,7 @@ export default function Home() {
                     <h2 className="hero-title">COSAS DEL MAS ALLÁ</h2>
                     <br />
                     <p className="hero-subtitle">Un demonio normal y corriente viviendo en el infierno.</p>
-                    <NavLink to="/comic" className="btn btn-leer-comic">Leer Comic</NavLink>
+                    <NavLink to="/comic" className="btn btn-leer-comic">Leer Cómic</NavLink>
                 </section>
                 <br />
                 <section className="home-section">

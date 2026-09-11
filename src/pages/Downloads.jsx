@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabaseClient";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 export default function Downloads() {
     const [downloads, setDownloads] = useState([])
@@ -7,7 +8,6 @@ export default function Downloads() {
     const [loading, setLoading] = useState(true) // Empieza cargando
     const [error, setError] = useState(null)
     const errorMessage = 'No se pudieron cargar los descargables. Inténtelo más tarde.'
-
 
     useEffect(() => {
         supabase
@@ -25,6 +25,8 @@ export default function Downloads() {
                 setLoading(false)
             })
     }, [])
+
+    useDocumentTitle('Descargas')
 
     async function downloadAsPng(imgUrl, filename) {
         const img = new Image()
@@ -79,7 +81,12 @@ export default function Downloads() {
                                 downloads.map(d => (
                                     <div key={d.id} className="download-card">
                                         <a href={d.image_url} target="_blank" rel="noopener">
-                                            <img src={d.image_url} alt={d.title} />
+                                            <img
+                                                src={d.image_url}
+                                                alt={d.title}
+                                                loading="lazy"
+                                                decoding="async"
+                                            />
                                         </a>
                                         <div className="download-info">
                                             <h3>{d.title}</h3>

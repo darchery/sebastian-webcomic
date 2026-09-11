@@ -1,7 +1,10 @@
 import { useLocation } from "react-router-dom"
+import useDocumentTitle from "../hooks/useDocumentTitle"
 
 export default function Page404() {
     const location = useLocation()
+
+    useDocumentTitle('Página no encontrada')
 
     return (
         <div className="content">

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 
 export default function CharacterPage() {
@@ -26,6 +27,13 @@ export default function CharacterPage() {
                 setLoading(false)
             })
     }, [id])
+
+    useDocumentTitle(
+        character ?
+            `${character.name}`
+            :
+            'Personaje'
+    )
 
     if (loading) return <p className="spinner"></p>
     if (error) return <p className="empty-text">{errorMessage}</p>

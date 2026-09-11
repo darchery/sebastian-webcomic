@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import useDocumentTitle from '../hooks/useDocumentTitle'
 
 export default function Comic() {
     const { id } = useParams()
@@ -19,6 +20,14 @@ export default function Comic() {
 
     // Estado derivado: no se usa useState
     const selectedChapter = (id && chapters.find(ch => ch.id === id)) || chapters[0] || null
+
+    // Título dinámico para la pestaña del navegador
+    useDocumentTitle(
+        selectedChapter ?
+            `Cap. ${selectedChapter.chapter_number} - ${selectedChapter.title}`
+            :
+            'Cómic'
+    )
 
     // 1 fetch: Cargar la lista de capítulos una vez al montar
     useEffect(() => {
@@ -122,6 +131,9 @@ export default function Comic() {
                                         src={p.image_url}
                                         alt={`Página ${p.page_number}`}
                                         className='comic-page'
+                                        loading='lazy' /* Carga imágenes por demanda del usuario scrolling */
+                                        decoding='async' /* Descomprime la imagen en otro hilo del procesador => dejando
+                                                            en el principal la página web => evita micro-congelaciones */
                                     >
                                     </img>
                                 ))

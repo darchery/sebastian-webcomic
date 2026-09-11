@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { supabase } from "../lib/supabaseClient"
+import useDocumentTitle from "../hooks/useDocumentTitle"
 
 export default function News() {
     const [news, setNews] = useState([])
@@ -24,6 +25,10 @@ export default function News() {
                 setLoading(false)
             })
     }, [])
+
+    useDocumentTitle(
+        'Novedades'
+    )
 
     if (loading) return <p className="spinner"></p>
     if (error) return (

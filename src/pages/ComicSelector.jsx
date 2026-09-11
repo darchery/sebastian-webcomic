@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { supabase } from "../lib/supabaseClient"
 import { Link } from "react-router-dom"
+import useDocumentTitle from "../hooks/useDocumentTitle"
 
 export default function ComicSelector() {
     const [chapters, setChapters] = useState([])
@@ -24,6 +25,8 @@ export default function ComicSelector() {
             })
     }, [])
 
+    useDocumentTitle('Cómic')
+
     if (loading) return <p className="spinner"></p>
     if (error) return <p className="empty-text">{errorMessage}</p>
 
@@ -43,6 +46,8 @@ export default function ComicSelector() {
                                     <img
                                         src={c.cover_image_url}
                                         alt={`Capítulo ${c.chapter_number}: ${c.title}`}
+                                        loading="lazy"
+                                        decoding="async"
                                     />
                                     <p className="chapter-card-title">
                                         {`Cap. ${c.chapter_number} - ${c.title}`}
