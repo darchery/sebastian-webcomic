@@ -1,4 +1,5 @@
 import DonationLink from "../components/DonationLink"
+import { DONATION_URLS } from "../lib/constants"
 
 export default function Donate() {
 
@@ -38,7 +39,7 @@ export default function Donate() {
                     </div>
                     <div className="donate-buttons">
                         <a
-                            href="https://ko-fi.com/TU_USUARIO"
+                            href={DONATION_URLS.kofi}
                             target="_blank"
                             rel="noopener"
                             className="donate-btn kofi-btn"
@@ -46,7 +47,7 @@ export default function Donate() {
                             Ko-fi
                         </a>
                         <a
-                            href="https://www.paypal.com/donate/?hosted_button_id=LHU9A3BDUCQRC"
+                            href={DONATION_URLS.paypal}
                             target="_blank"
                             rel="noopener"
                             className="donate-btn paypal-btn"

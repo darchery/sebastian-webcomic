@@ -35,7 +35,7 @@ export default function Comic() {
                 }
                 setLoadingChapters(false)
             })
-    }, [id])
+    }, [])
 
     // 2 fetch: Cargar las páginas del capítulo cuando cambie el capítulo en el select
     useEffect(() => {

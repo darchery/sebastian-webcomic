@@ -15,7 +15,7 @@ export default function CharacterPage() {
             .from('characters')
             .select('*')
             .eq('id', id)
-            .single()
+            .maybeSingle() // Si no hay data => devuelve null como data, antes devolvía error interno de supabase 
             .then(({ data, error }) => {
                 if (!error) {
                     setCharacter(data)
