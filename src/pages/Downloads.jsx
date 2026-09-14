@@ -26,37 +26,45 @@ export default function Downloads() {
             })
     }, [])
 
-    useDocumentTitle('Descargas')
+    useDocumentTitle('Descargables')
 
     async function downloadAsPng(imgUrl, filename) {
-        const img = new Image()
-        img.crossOrigin = 'anonymous'
-        img.src = imgUrl
+        try {
+            const img = new Image();
+            img.crossOrigin = 'anonymous'; // Compatible con el CORS de tu Supabase
+            img.src = imgUrl;
 
-        // Espera con control de error: no continua si la imagen falla
-        await new Promise((resolve) => {
-            img.onload = resolve
-            img.onerror = resolve
-        })
+            await new Promise((resolve, reject) => {
+                img.onload = resolve;
+                img.onerror = () => reject(new Error('No se pudo cargar la imagen'));
+            });
 
-        if (!img.complete || img.naturalWidth === 0) {
-            console.error('No se pudo cargar la imagen (posible problema de CORS)')
-            return
+            // Pintamos en canvas para convertir a PNG real
+            const canvas = document.createElement('canvas');
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0);
+
+            // toBlob genera un archivo binario PNG nativo
+            canvas.toBlob((blob) => {
+                if (!blob) return;
+                const blobUrl = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = `${filename}.png`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(blobUrl);
+            }, 'image/png');
+        } catch (err) {
+            console.error('Error al convertir a PNG:', err);
+            // Si algo fallase, como salvavidas abre la imagen original
+            window.open(imgUrl, '_blank');
         }
-
-        const canvas = document.createElement('canvas')
-        canvas.width = img.naturalWidth
-        canvas.height = img.naturalHeight
-        const ctx = canvas.getContext('2d')
-        ctx.drawImage(img, 0, 0)
-
-        const a = document.createElement('a')
-        a.download = `${filename}.png`
-        a.href = canvas.toDataURL('image/png')
-        document.body.appendChild(a)   // más fiable
-        a.click()
-        document.body.removeChild(a)
     }
+
 
     if (loading) return <p className="spinner"></p>
     if (error) return (

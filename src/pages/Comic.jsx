@@ -21,6 +21,16 @@ export default function Comic() {
     // Estado derivado: no se usa useState
     const selectedChapter = (id && chapters.find(ch => ch.id === id)) || chapters[0] || null
 
+    // Cálculo de la posición del capítulo actual en la lista
+    const currentIndex = chapters.findIndex(ch => ch.id === selectedChapter.id)
+    const prevChapter = currentIndex > 0 ? chapters[currentIndex - 1] : null
+    const nextChapter = currentIndex >= 0 && currentIndex < chapters.length - 1 ? chapters[currentIndex + 1] : null
+
+    const goToChapter = (chapterId) => {
+        setLoadingPages(true)
+        navigate(`/comic/${chapterId}`)
+    }
+
     // Título dinámico para la pestaña del navegador
     useDocumentTitle(
         selectedChapter ?

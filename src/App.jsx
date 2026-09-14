@@ -9,10 +9,12 @@ import Layout from './components/Layout'
 import Page404 from './pages/Page404'
 import CharacterPage from './pages/CharacterPage'
 import ComicSelector from './pages/ComicSelector'
+import ScrollToTop from './components/ScrollToTop'
 
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route element={<Layout></Layout>}>
           <Route path="/" element={<Home />} />
