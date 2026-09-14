@@ -78,32 +78,27 @@ export default function Home() {
                     <p className="hero-subtitle">Un demonio normal y corriente viviendo en el infierno.</p>
                     <NavLink to="/comic" className="btn btn-leer-comic">Leer Cómic</NavLink>
                 </section>
-                <br />
                 <section className="home-section">
                     <h2>Introducción</h2>
                     <div className="text-card">
                         <p>
                             Hola, querido lector. Soy <b>Dani</b>, y bienvenido a mi proyecto.
                         </p>
-                        <br />
                         <p>
                             En esta web podrás disfrutar de una comedia absurda sobre un <b>funcionario del Infierno</b> cuya
                             vida cotidiana acaba llevándolo a relacionarse con demonios, muertos, personajes históricos
                             y figuras celestiales, mientras intenta encontrar su lugar entre todos ellos.
                         </p>
-                        <br />
                         <p>
                             <b>Sebastián Malicia</b> es un tío bastante normal, con una vida gris, un trabajo aburrido y un piso
                             compartido. En esta historia tendrás la oportunidad de conocerle y verle trabajar, meter la pata,
                             hacer el idiota y, sobre todo, sobrevivir a todo tipo de desastres.
                         </p>
-                        <br />
                         <p>
                             Este cómic es un <b>proyecto completamente personal</b>, nacido de mi imaginación y de mi afición por
                             dibujar y crear historias. Es una historia que llevo desarrollando con mucho cariño y que, poco a poco,
                             estoy convirtiendo en realidad.
                         </p>
-                        <br />
                         <p>
                             Gracias por confiar en este proyecto y por dedicarle un poco de tu tiempo. Espero sinceramente
                             que te guste <b>Cosas del más allá</b>, y que disfrutes leyendo sus historias tanto como yo me divierto creándolas.
@@ -120,7 +115,6 @@ export default function Home() {
                             No pretendo representar fielmente la realidad ni tengo intención de ofender a ningún individuo, colectivo,
                             creencia o institución.
                         </p>
-                        <br />
                         <p>
                             Todo lo que ocurre en estas páginas pertenece al universo de Sebastián y Julio. Si algo te
                             resulta absurdo, probablemente es   porque lo es.
@@ -146,7 +140,6 @@ export default function Home() {
                         <p className="dani">
                             <b>Gracias por estar aquí y espero que disfrutes de la historia.</b>
                         </p>
-                        <br />
                         <p>
                             <span><b><i>~ Dani</i></b></span>
                         </p>
@@ -161,33 +154,62 @@ export default function Home() {
                             <p className="spinner"></p>
                         ) : character ? (
                             <div className="spotlight">
-                                <img src={character.image_url} alt={character.name} />
 
+                                {/* Columna izq: Imagen + Carrusel */}
+                                <div className="spotlight-visual">
+                                    <NavLink
+                                        to={`/characters/${character.id}`}
+                                        className="spotlight-img-wrapper"
+                                        title={`Ver ficha de ${character.name}`}
+                                    >
+                                        <img src={character.image_url} alt={character.name} />
+                                    </NavLink>
+                                    {/* Controles de carrusel justo debajo de la imagen */}
+                                    <div className='spotlight-carousel-controls'>
+                                        <button
+                                            className='btn btn-carousel'
+                                            onClick={() => handlePrevCharacter()}
+                                            aria-label="Personaje anterior"
+                                        >
+                                            ←
+                                        </button>
+                                        {/* Indicador del total de personajes respecto al actual */}
+                                        <span className="spotlight-counter">{currentCharacterIndex + 1} / {characters.length}</span>
+                                        <button
+                                            className='btn btn-carousel'
+                                            onClick={() => handleNextCharacter()}
+                                            aria-label="Personaje siguiente"
+                                        >
+                                            →
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {/* Columna derecha: Información + botones acción */}
                                 <div className="spotlight-info">
-                                    <h3>{character.name}</h3>
-                                    <p>{character.short_phrase}</p>
+                                    <NavLink
+                                        to={`/characters/${character.id}`}
+                                        className="spotlight-title-link"
+                                    >
+                                        <h3>{character.name}</h3>
+                                    </NavLink>
+
+                                    <p className="spotlight-phrase">{character.short_phrase}</p>
 
                                     <div className="spotlight-actions">
-                                        <NavLink to="/characters" className="btn">Ver todos</NavLink>
-                                        {/* Botones del carrusel */}
-                                        <div className='spotlight-carousel-controls'>
-                                            <button
-                                                className='btn btn-carousel'
-                                                onClick={() => handlePrevCharacter()}
-                                                aria-label="Personaje anterior"
-                                            >
-                                                ←
-                                            </button>
-                                            {/* Indicador del total de personajes respecto al actual */}
-                                            <span className="spotlight-counter">{currentCharacterIndex + 1} / {characters.length}</span>
-                                            <button
-                                                className='btn btn-carousel'
-                                                onClick={() => handleNextCharacter()}
-                                                aria-label="Personaje siguiente"
-                                            >
-                                                →
-                                            </button>
-                                        </div>
+                                        <NavLink
+                                            to={`/characters/${character.id}`}
+                                            className="btn"
+                                        >
+                                            Lee sobre {character.name}
+                                        </NavLink>
+                                        <NavLink
+                                            to="/characters"
+                                            className="btn"
+                                        >
+                                            Ver todos
+                                        </NavLink>
+
                                     </div>
                                 </div>
                             </div>

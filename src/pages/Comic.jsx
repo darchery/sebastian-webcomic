@@ -160,7 +160,7 @@ export default function Comic() {
                             </button>
                             <button
                                 className='btn'
-                                onClick={() => scrollTo({ top: 0, behavior: 'smooth' })}
+                                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                             >
                                 ↑ Subir
                             </button>
@@ -183,7 +183,7 @@ export default function Comic() {
                 )
             }
 
-        </div >
+        </div>
     )
 
 }
