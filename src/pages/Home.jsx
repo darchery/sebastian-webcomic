@@ -135,7 +135,7 @@ export default function Home() {
                         </p>
                         <br />
                         <p>
-                            <span className="dani"><b><i>~ Dani</i></b></span>
+                            <span><b><i>~ Dani</i></b></span>
                         </p>
                     </div>
                 </section>

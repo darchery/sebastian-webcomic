@@ -44,17 +44,70 @@ button {
     font-family: var(--font-main);
 }
 
+/* Estándar de tamaño de títulos y textos */
+
+/* Títulos compactos y con aire entre letras */
+h1,
+h2,
+h3,
+.page-title,
+.hero-title {
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+    /*text-shadow: 1px 1px 2px var(--text-secondary); Preguntar a dani*/
+    line-height: 1.15;
+}
+
+/* Título principal de cada página */
+.page-title {
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2.8rem;
+    /* PARA H1 */
+}
+
+/* Secciones intermedias (Home, Noticias) */
+.home-section h2,
+.news-article h2,
+.character-bio-full h2 {
+    font-size: 2rem;
+    /* PARA H2 */
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    font-family: var(--font-heading);
+}
+
+/* Títulos de tarjetas (Personajes, Descargas, etc.) */
+.character-info h3,
+.download-info h3,
+.spotlight h3,
+.text-card h3,
+.donate-info h3 {
+    font-size: 1.5rem;
+    /* PARA H3 */
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-heading);
+}
+
+/* Texto base de lectura */
 .content {
-    max-width: 800px;
+    max-width: 850px;
     /* opcional: limita el ancho de lectura en pantallas grandes */
     margin: 0 auto;
     /* centra el bloque si usas max-width */
     padding: 0 1.75rem;
     /* esto es lo que te separa del borde de la pantalla */
-    font-size: 1.20rem;
+    font-size: 1.2rem;
     text-align: center;
+    line-height: 1.6;
 }
 
+/* Estándar de tamaño de títulos y textos */
+
+
+/* Enlaces */
 .link-kofi {
     color: var(--accent);
     text-decoration: none;
@@ -65,13 +118,6 @@ button {
     color: #005ea6;
     text-decoration: none;
     transition: color 0.2s linear;
-}
-
-.page-title {
-    font-family: var(--font-heading);
-    color: var(--accent);
-    text-align: center;
-    margin-bottom: 1rem;
 }
 
 /* Navbar */
@@ -224,10 +270,6 @@ button {
 
 /* Home */
 
-.dani {
-    font-size: 1.25rem;
-}
-
 
 /* Hero Section - Aquí se puede ver el botón de leer cómic */
 .hero {
@@ -240,7 +282,6 @@ button {
 }
 
 .hero-title {
-    font-family: var(--font-heading);
     font-size: 3rem;
     color: var(--accent);
 }
@@ -280,14 +321,6 @@ button {
     font-size: 1.4rem;
 }
 
-.home-section h2 {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: var(--accent);
-}
-
-
 /* Conoce a los personajes */
 .spotlight {
     display: flex;
@@ -296,6 +329,10 @@ button {
     background: var(--bg-card);
     padding: 2rem;
     border-radius: var(--radius);
+}
+
+.spotlight p {
+    color: var(--text-secondary);
 }
 
 .spotlight img {
@@ -330,7 +367,7 @@ button {
 
 .news-date {
     color: var(--text-secondary);
-    font-size: 0.85rem;
+    font-size: 1rem;
 }
 
 .empty-text {
@@ -365,15 +402,9 @@ button {
     padding: 1.75rem;
 }
 
-.character-info h3 {
-    font-family: var(--font-heading);
-    color: var(--accent);
-    /* TODO: ROJO o NEGRO*/
-}
-
 .character-age {
     color: var(--text-secondary);
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .character-bio {
@@ -413,17 +444,6 @@ button {
     border-radius: var(--radius);
 }
 
-.news-article h2 {
-    font-family: var(--font-heading);
-    color: var(--accent);
-    margin-bottom: 0.25rem;
-}
-
-.news-article time {
-    color: var(--text-secondary);
-    font-size: 0.85rem;
-}
-
 .news-article p {
     margin-top: 1rem;
     color: var(--text-primary);
@@ -457,11 +477,6 @@ button {
 
 .download-info {
     padding: 1rem;
-}
-
-.download-info h3 {
-    font-family: var(--font-heading);
-    color: var(--accent);
 }
 
 /* Donate */
@@ -527,18 +542,10 @@ button {
 }
 
 .donate-info {
-    text-align: left;
     background: var(--bg-card);
     padding: 2rem;
     border-radius: var(--radius);
-    text-align: center;
     list-style: disc inside;
-}
-
-.donate-info h3 {
-    font-family: var(--font-heading);
-    color: var(--accent);
-    margin-bottom: 1rem;
 }
 
 /* Donate */
@@ -655,12 +662,6 @@ button {
     border-radius: var(--radius);
 }
 
-.character-bio-full h2 {
-    font-family: var(--font-heading);
-    color: var(--accent);
-    margin-bottom: 1rem;
-}
-
 .character-bio-full p {
     white-space: pre-wrap;
 }
@@ -712,7 +713,7 @@ button {
 
 .chapter-card-title {
     padding: 0.75rem 1rem;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--text-primary);
     text-align: center;
 }
