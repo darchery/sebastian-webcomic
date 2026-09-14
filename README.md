@@ -26,49 +26,33 @@ Web del cómic **Cosas del más allá**: una comedia absurda sobre un funcionari
 ```
 sebastian-webcomic/
 ├── public/
-│   └── favicon.png             Icono de pestaña
+│   └── favicon.png               Icono de pestaña
 ├── src/
 │   ├── components/
-│   │   ├── Navbar.jsx          Barra de navegación (logo imagen + responsive)
-│   │   ├── Footer.jsx          Pie de página
-│   │   ├── Layout.jsx          Layout global (Navbar + Footer)
-│   │   ├── CharacterCard.jsx   Tarjeta de personaje (Link a ficha)
-│   │   └── DonationLink.jsx    Enlaces de donación (Ko-fi / PayPal)
-│   ├── pages/
-│   │   ├── Home.jsx            Inicio (hero, spotlight, secciones)
-│   │   ├── Comic.jsx           Lector de cómic (select + páginas)
-│   │   ├── ComicSelector.jsx   Índice de capítulos (grid con portadas)
-│   │   ├── Characters.jsx      Grid de personajes
-│   │   ├── CharacterPage.jsx   Ficha individual de personaje
-│   │   ├── News.jsx            Noticias y novedades
-│   │   ├── Downloads.jsx       Descargables (wallpapers)
-│   │   ├── Donate.jsx          Donaciones (Ko-fi / PayPal)
-│   │   └── Page404.jsx         Página no encontrada
+│   │   ├── CharacterCard.jsx     Tarjeta de personaje (Link a ficha)
+│   │   ├── DonationLink.jsx      Enlaces de donación (Ko-fi / PayPal)
+│   │   ├── Footer.jsx            Pie de página
+│   │   ├── Layout.jsx            Layout global (Navbar + Footer)
+│   │   └── Navbar.jsx            Barra de navegación (logo imagen + responsive)
+│   ├── hooks/
+│   │   └── useDocumentTitle.js   Títulos dinámicos de página
 │   ├── lib/
-│   │   └── supabaseClient.js   Conexión a Supabase
-│   ├── App.jsx                 Rutas
-│   ├── main.jsx                Entry point
-│   └── index.css               Estilos globales (tema rosa/claro)
+│   │   ├── constants.js          URLs de donación
+│   │   └── supabaseClient.js     Conexión a Supabase
+│   ├── pages/
+│   │   ├── CharacterPage.jsx     Ficha individual de personaje
+│   │   ├── Characters.jsx        Grid de personajes
+│   │   ├── Comic.jsx             Lector de cómic (select + páginas)
+│   │   ├── ComicSelector.jsx     Índice de capítulos (grid con portadas)
+│   │   ├── Donate.jsx            Donaciones (Ko-fi / PayPal)
+│   │   ├── Downloads.jsx         Descargables (wallpapers)
+│   │   ├── Home.jsx              Inicio (hero, spotlight, secciones)
+│   │   ├── News.jsx              Noticias y novedades
+│   │   └── Page404.jsx           Página no encontrada
+│   ├── App.jsx                   Rutas
+│   ├── index.css                 Estilos globales (tema rosa/claro)
+│   └── main.jsx                  Entry point
 ├── index.html
-└── package.json
+├── package.json
+└── vite.config.js
 ```
-
-## Decisiones de diseño
-
-- **Tema rosa/claro** con acentos rojos (variables CSS en `index.css`)
-- **Logo con imagen** (no texto) en el navbar, con height responsivo
-- **Lector de cómic en scroll continuo** (estilo manga/webtoon)
-- **Grid de capítulos** con portada antes del lector
-- **Ficha de personaje** con imagen completa, frase, especie, edad y bio
-- **Navbar sticky** que se desliza en el lector de cómic
-- **Sin gradientes** (preferencia del autor)
-
-## Estado actual
-
-- ✅ Home, Personajes (grid + ficha), Noticias, Descargas, Donar
-- ✅ Cómic: índice de capítulos + lector con selección por URL
-- ✅ Página 404, loading/error en todas las páginas
-- ✅ Navbar responsive con logo imagen
-- ✅ Favicon
-- ⏳ Panel de estadísticas
-- ⏳ Deploy en Vercel
