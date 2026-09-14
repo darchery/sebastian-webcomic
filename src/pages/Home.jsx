@@ -6,14 +6,25 @@ import { NavLink } from "react-router-dom";
 
 export default function Home() {
     const [news, setNews] = useState([]);
-    const [character, setCharacter] = useState(null);
+    const [characters, setCharacters] = useState([])
+    const [currentCharacterIndex, setCurrentCharacterIndex] = useState(0)
+    const character = characters[currentCharacterIndex] || null
+
+    // Pasar personaje previo
+    const handlePrevCharacter = () => {
+        setCurrentCharacterIndex(prev => (prev > 0 ? prev - 1 : characters.length - 1))
+    }
+    // Carrusel circular
+    // Pasar siguiente personaje
+    const handleNextCharacter = () => {
+        setCurrentCharacterIndex(prev => (prev >= (characters.length - 1) ? 0 : prev + 1))
+    }
 
     const [loadingNews, setLoadingNews] = useState(true) // Empieza cargando
     const [loadingCharacters, setLoadingCharacters] = useState(true) // Empieza cargando
 
     const [error, setError] = useState(null)
     const errorMessage = 'No se pudieron cargar los datos. Inténtelo más tarde.'
-
 
     useEffect(() => {
         supabase
@@ -33,11 +44,13 @@ export default function Home() {
         supabase
             .from('characters')
             .select('*')
+            .order('order', { ascending: true })
             .then(({ data, error }) => {
                 if (!error) {
                     if (data?.length > 0) { // Verifica si data no es null/undefined y tiene al menos un elemento
-                        const randomCharacter = data[Math.floor(Math.random() * data.length)];
-                        setCharacter(randomCharacter)
+                        const randomIndexCharacter = Math.floor(Math.random() * data.length);
+                        setCurrentCharacterIndex(randomIndexCharacter)
+                        setCharacters(data || [])
                     }
                 } else {
                     setError(errorMessage)
@@ -149,10 +162,33 @@ export default function Home() {
                         ) : character ? (
                             <div className="spotlight">
                                 <img src={character.image_url} alt={character.name} />
-                                <div>
+
+                                <div className="spotlight-info">
                                     <h3>{character.name}</h3>
                                     <p>{character.short_phrase}</p>
-                                    <NavLink to="/characters" className="btn">Ver todos</NavLink>
+
+                                    <div className="spotlight-actions">
+                                        <NavLink to="/characters" className="btn">Ver todos</NavLink>
+                                        {/* Botones del carrusel */}
+                                        <div className='spotlight-carousel-controls'>
+                                            <button
+                                                className='btn btn-carousel'
+                                                onClick={() => handlePrevCharacter()}
+                                                aria-label="Personaje anterior"
+                                            >
+                                                ←
+                                            </button>
+                                            {/* Indicador del total de personajes respecto al actual */}
+                                            <span className="spotlight-counter">{currentCharacterIndex + 1} / {characters.length}</span>
+                                            <button
+                                                className='btn btn-carousel'
+                                                onClick={() => handleNextCharacter()}
+                                                aria-label="Personaje siguiente"
+                                            >
+                                                →
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         ) : (

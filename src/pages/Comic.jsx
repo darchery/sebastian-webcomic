@@ -22,10 +22,11 @@ export default function Comic() {
     const selectedChapter = (id && chapters.find(ch => ch.id === id)) || chapters[0] || null
 
     // Cálculo de la posición del capítulo actual en la lista
-    const currentIndex = chapters.findIndex(ch => ch.id === selectedChapter.id)
+    const currentIndex = chapters.findIndex(ch => ch.id === selectedChapter?.id)
     const prevChapter = currentIndex > 0 ? chapters[currentIndex - 1] : null
     const nextChapter = currentIndex >= 0 && currentIndex < chapters.length - 1 ? chapters[currentIndex + 1] : null
 
+    // Función para navegar a cualquier capítulo
     const goToChapter = (chapterId) => {
         setLoadingPages(true)
         navigate(`/comic/${chapterId}`)
@@ -149,6 +150,28 @@ export default function Comic() {
                                 ))
                             }
                         </div>
+                        <div className='comic-nav-footer'>
+                            <button
+                                className='btn'
+                                onClick={() => goToChapter(prevChapter.id)}
+                                disabled={!prevChapter}
+                            >
+                                ← Anterior
+                            </button>
+                            <button
+                                className='btn'
+                                onClick={() => scrollTo({ top: 0, behavior: 'smooth' })}
+                            >
+                                ↑ Subir
+                            </button>
+                            <button
+                                className='btn'
+                                onClick={() => goToChapter(nextChapter.id)}
+                                disabled={!nextChapter}
+                            >
+                                Siguiente →
+                            </button>
+                        </div>
                     </>
                 ) : (
                     <p className="empty-text">
@@ -159,7 +182,8 @@ export default function Comic() {
                     </p>
                 )
             }
-        </div>
+
+        </div >
     )
 
 }

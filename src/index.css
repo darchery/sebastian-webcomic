@@ -341,6 +341,39 @@ h3,
     object-fit: cover;
 }
 
+.spotlight-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4rem;
+    /**/
+    margin-top: 1rem;
+}
+
+.spotlight-carousel-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-carousel {
+    padding: 0.4rem 0.8rem;
+    font-size: 1.2rem;
+    margin-top: 0;
+    cursor: pointer;
+}
+
+.spotlight-counter {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--accent);
+    letter-spacing: 1px;
+    min-width: 45px;
+    text-align: center;
+}
+
+
 @media (max-width: 768px) {
     .spotlight {
         flex-direction: column;
@@ -603,6 +636,26 @@ h3,
   display: block;
 }
 */
+
+.comic-nav-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin: 2.5rem 0 1.5rem;
+    flex-wrap: wrap;
+}
+
+.comic-nav-footer .btn {
+    margin-top: 0;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.comic-nav-footer button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
 
 /* Spinner de carga */
 @keyframes spin {
