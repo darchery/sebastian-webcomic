@@ -1,20 +1,57 @@
+/* PALETA ANTERIOR (GUARDADA COMO RESPALDO)
 :root {
     --bg-primary: #eeb4be;
-    /* rojo oscuro rosita, fondo principal */
     --bg-secondary: #a88187;
-    /* rojo claro un poco mas claro */
     --bg-card: #cea2a9;
     --accent: #8b1a1a;
-    /* rojo oscuro, color principal de acento */
     --accent-hover: #ff4d5a;
-    /* rojo brillante, color de acento al pasar el mouse */
     --text-primary: #1a1a1a;
-    /* negro, texto principal */
     --text-secondary: #3f2424;
-    /* rojo oscuro apagado, texto secundario */
     --font-main: 'Outfit', sans-serif;
     --font-heading: 'Bangers', sans-serif;
     --radius: 5px;
+}
+*/
+
+:root {
+    /* Fondos */
+    --bg-primary: #f6dcdb;
+    /* Tono base cálido, suave y limpio para lectura */
+    --bg-secondary: #8c252a;
+    /* Granate infernal profundo para navbar y footer */
+    --bg-card: #ffffff;
+    /* Blanco roto / marfil para destacar el contenido con claridad */
+    --bg-card-hover: #fff5f5;
+
+    /* Colores de Marca y Acento */
+    --accent: #a81c1c;
+    /* Rojo infernal vibrante para títulos, botones y destacados */
+    --accent-hover: #d32f2f;
+    /* Hover más llamativo y enérgico */
+    --accent-light: #fbe9e7;
+    /* Fondo tenue para badges y resaltados */
+
+    /* Tipografía */
+    --text-primary: #211516;
+    /* Marrón casi negro, suave para los ojos */
+    --text-secondary: #6e4749;
+    /* Tono rojizo atenuado para fechas y subtítulos */
+    --text-light: #ffffff;
+    /* Texto sobre fondos oscuros (navbar/footer/botones) */
+
+    --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading: 'Bangers', cursive, sans-serif;
+
+    /* Bordes, radios y sombras estilo Comic Pop */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+
+    --shadow-sm: 0 2px 6px rgba(140, 37, 42, 0.08);
+    --shadow-md: 0 6px 18px rgba(140, 37, 42, 0.12);
+    --shadow-comic: 4px 4px 0px #211516;
+    /* Sombra sólida estilo viñeta de cómic */
+    --border-comic: 2px solid #211516;
 }
 
 * {
@@ -104,18 +141,51 @@ h3,
     line-height: 1.6;
 }
 
+.hero,
+.spotlight {
+    border-radius: var(--radius-lg);
+}
+
+.character-card,
+.download-card,
+.chapter-card,
+.text-card,
+.donate-intro,
+.news-article,
+.btn,
+.btn-leer-comic,
+.spotlight-img-wrapper,
+.spotlight img,
+.img-donacion,
+.donate-btn,
+.character-profile,
+.character-profile-img,
+.character-bio-full {
+    border-radius: var(--radius-md);
+}
+
+.btn-carousel,
+.chapter-selector select,
+.chapter-selector option,
+.news-date,
+.comic-page {
+    border-radius: var(--radius-sm);
+}
+
 /* Estándar de tamaño de títulos y textos */
 
 
 /* Enlaces */
 .link-kofi {
-    color: var(--accent);
+    color: var(--text-light);
     text-decoration: none;
     transition: color 0.2s linear;
 }
 
 .link-paypal {
-    color: #005ea6;
+    color: #2dabff
+        /*anterior: #005ea6*/
+    ;
     text-decoration: none;
     transition: color 0.2s linear;
 }
@@ -164,14 +234,14 @@ h3,
 }
 
 .navbar-links a {
-    color: var(--text-primary);
+    color: var(--text-light);
     text-decoration: none;
     transition: color 0.2s linear;
 }
 
 .navbar-links a:hover,
 .navbar-links a.active {
-    color: var(--accent);
+    color: var(--accent-light);
 }
 
 /* Menú desplegable */
@@ -179,7 +249,7 @@ h3,
     display: none;
     background: none;
     border: none;
-    color: var(--text-primary);
+    color: var(--text-light);
     font-size: 1.65rem;
     cursor: pointer;
 }
@@ -248,6 +318,11 @@ h3,
     font-size: 1.2rem;
 }
 
+.footer,
+.footer-text {
+    color: var(--accent-light);
+}
+
 /* Footer */
 
 /* Layout */
@@ -277,7 +352,6 @@ h3,
     padding: 4rem 1rem;
     /*TODO: Preguntar a dani que le gusta más*/
     background: var(--bg-card);
-    border-radius: var(--radius);
     margin-bottom: 2.5rem;
 }
 
@@ -299,7 +373,6 @@ h3,
     background: var(--accent);
     color: white;
     border: none;
-    border-radius: var(--radius);
     font-size: 1rem;
     margin-top: 1rem;
     text-decoration: none;
@@ -328,7 +401,6 @@ h3,
     align-items: center;
     background: var(--bg-card);
     padding: 2rem;
-    border-radius: var(--radius);
 }
 
 /* Columna izquierda */
@@ -347,7 +419,6 @@ h3,
     width: 200px;
     height: 450px;
     /* Altura uniforme para todos */
-    border-radius: var(--radius);
     overflow: hidden;
     transition: transform 0.2s, box-shadow 0.2s;
     background: #ede0df;
@@ -362,7 +433,6 @@ h3,
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    border-radius: var(--radius);
 }
 
 /* Columna derecha de información */
@@ -437,7 +507,6 @@ h3,
 .text-card {
     background: var(--bg-card);
     padding: 1.5rem;
-    border-radius: var(--radius);
 }
 
 /* Espaciado automático entre párrafos o bloques dentro de tarjetas de texto */
@@ -455,6 +524,7 @@ h3,
 
 .empty-text {
     color: var(--text-secondary);
+    align-content: center;
 }
 
 
@@ -463,7 +533,6 @@ h3,
 /* Character Card */
 .character-card {
     background: var(--bg-card);
-    border-radius: var(--radius);
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
@@ -524,7 +593,6 @@ h3,
 .news-article {
     background: var(--bg-card);
     padding: 2rem;
-    border-radius: var(--radius);
 }
 
 .news-article p {
@@ -542,7 +610,6 @@ h3,
 
 .download-card {
     background: var(--bg-card);
-    border-radius: var(--radius);
     overflow: hidden;
     transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -576,7 +643,6 @@ h3,
 .img-donacion {
     max-width: 100%;
     border: 2px solid var(--accent);
-    border-radius: var(--radius);
     margin-bottom: 2rem;
 }
 
@@ -604,7 +670,6 @@ h3,
 
 .donate-btn {
     padding: 1rem 2rem;
-    border-radius: var(--radius);
     font-size: 1.2rem;
     font-weight: 600;
     text-decoration: none;
@@ -632,7 +697,6 @@ h3,
 .donate-info {
     background: var(--bg-card);
     padding: 2rem;
-    border-radius: var(--radius);
     list-style: disc inside;
 }
 
@@ -653,7 +717,6 @@ h3,
     background: var(--bg-card);
     color: var(--text-primary);
     border: 2px solid var(--accent);
-    border-radius: var(--radius);
     margin-left: 0.5rem;
     font-family: var(--font-main);
     font-size: 1.2rem;
@@ -662,6 +725,7 @@ h3,
 .chapter-selector option {
     font-family: var(--font-main);
     font-size: 1.2rem;
+    border: 2px solid var(--accent);
 }
 
 .page-scroll {
@@ -676,7 +740,6 @@ h3,
     width: 100%;
     max-width: 900px;
     height: auto;
-    border-radius: var(--radius);
     background: var(--bg-card);
     display: block;
     margin: 0 auto;
@@ -742,14 +805,12 @@ h3,
     align-items: center;
     background: var(--bg-card);
     padding: 2rem;
-    border-radius: var(--radius);
     margin-bottom: 2rem;
     text-align: left;
 }
 
 .character-profile-img {
     width: 200px;
-    border-radius: var(--radius);
     object-fit: cover;
 }
 
@@ -767,7 +828,6 @@ h3,
 .character-bio-full {
     background: var(--bg-card);
     padding: 2rem;
-    border-radius: var(--radius);
 }
 
 .character-bio-full p {
@@ -801,7 +861,6 @@ h3,
 
 .chapter-card {
     background: var(--bg-card);
-    border-radius: var(--radius);
     overflow: hidden;
     text-decoration: none;
     transition: transform 0.2s, box-shadow 0.2s;
