@@ -22,13 +22,14 @@
     --bg-card: #ffffff;
     /* Blanco roto / marfil para destacar el contenido con claridad */
     --bg-card-hover: #fff5f5;
+    --bg-hero: #5c1417;
 
     /* Colores de Marca y Acento */
     --accent: #a81c1c;
     /* Rojo infernal vibrante para títulos, botones y destacados */
     --accent-hover: #d32f2f;
     /* Hover más llamativo y enérgico */
-    --accent-light: #fbe9e7;
+    --accent-light: #f6beb8;
     /* Fondo tenue para badges y resaltados */
 
     /* Tipografía */
@@ -38,6 +39,8 @@
     /* Tono rojizo atenuado para fechas y subtítulos */
     --text-light: #ffffff;
     /* Texto sobre fondos oscuros (navbar/footer/botones) */
+    --text-leer-comic: #ffe1e1;
+
 
     --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-heading: 'Bangers', cursive, sans-serif;
@@ -79,6 +82,23 @@ img {
 button {
     cursor: pointer;
     font-family: var(--font-main);
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    font-size: 1rem;
+    margin-top: 1rem;
+    text-decoration: none;
+    transition: background 0.2s linear;
+}
+
+.btn:hover {
+    background: var(--accent-hover);
+    color: var(--accent);
 }
 
 /* Estándar de tamaño de títulos y textos */
@@ -237,7 +257,6 @@ h3,
     font-size: 3.5rem;
     color: var(--accent);
     text-decoration: none;
-
     /* Nueva */
     display: flex;
     align-items: center;
@@ -247,7 +266,6 @@ h3,
     height: 10rem;
     object-fit: contain;
     width: auto;
-
     transition: transform 0.2s;
 }
 
@@ -269,7 +287,6 @@ h3,
     color: var(--text-light);
     text-decoration: none;
     transition: all 0.2s linear;
-
     padding: 0.25rem 0.5rem;
     border-radius: var(--radius-sm);
 }
@@ -390,40 +407,66 @@ h3,
 
 /* Hero Section - Aquí se puede ver el botón de leer cómic */
 .hero {
-    text-align: center;
-    padding: 4rem 1rem;
-    /*TODO: Preguntar a dani que le gusta más*/
-    background: var(--bg-card);
+    padding: 3.5rem 1rem;
     margin-bottom: 2.5rem;
+
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+
+    background-color: var(--bg-hero);
+    border: var(--border-comic);
+    border-radius: var(--radius-lg);
+    box-shadow: 2px 2px 0px #000;
 }
 
 .hero-title {
-    font-size: 3rem;
-    color: var(--accent);
+    font-size: 3.5rem;
+    font-family: var(--font-heading);
+    color: var(--text-leer-comic);
+    text-shadow: 3px 3px 0px #000;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
 }
 
 .hero-subtitle {
     font-size: 1.5rem;
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto 1.75rem auto;
 }
 
 /** Botón de Leer Cómic */
-.btn {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background: var(--accent);
-    color: white;
-    border: none;
-    font-size: 1rem;
+.btn-leer-comic {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    letter-spacing: 1.5px;
+    padding: 1.1rem 2.2rem;
     margin-top: 1rem;
     text-decoration: none;
-    transition: background 0.2s linear;
+    display: inline-block;
+
+    background-color: var(--accent);
+    color: var(--text-light);
+
+    border: var(--border-comic);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-comic);
+    text-shadow: 1px 1px 0px #000;
+
+    transition: all 0.2s ease;
 }
 
-.btn:hover {
-    background: var(--accent-hover);
-    color: var(--accent);
+
+.btn-leer-comic:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #211516;
+    background-color: var(--accent-hover);
+}
+
+.btn-leer-comic:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #211516;
 }
 
 /* Secciones de la página de inicio */
@@ -431,10 +474,7 @@ h3,
     margin-bottom: 2.5rem;
 }
 
-.btn-leer-comic {
-    padding: 1.5rem;
-    font-size: 1.4rem;
-}
+
 
 /* Conoce a los personajes */
 .spotlight {
@@ -611,6 +651,10 @@ h3,
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 1.5rem;
+    }
+
+    .character-card {
+        height: 450px;
     }
 }
 

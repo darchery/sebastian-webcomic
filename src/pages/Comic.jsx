@@ -162,7 +162,8 @@ export default function Comic() {
                                 className='btn'
                                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                             >
-                                ↑ Subir
+                                <p>↑</p>
+                                <p>Subir</p>
                             </button>
                             <button
                                 className='btn'
