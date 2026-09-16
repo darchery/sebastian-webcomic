@@ -151,6 +151,7 @@ h3,
 .chapter-card,
 .text-card,
 .donate-intro,
+.donate-info,
 .news-article,
 .btn,
 .btn-leer-comic,
@@ -172,12 +173,30 @@ h3,
     border-radius: var(--radius-sm);
 }
 
-/* Estándar de tamaño de títulos y textos */
+.character-card,
+.download-card,
+.spotlight-img-wrapper {
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.character-card:hover,
+.download-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px var(--accent);
+    background: var(--bg-card-hover);
+}
+
+.spotlight-img-wrapper:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px var(--accent);
+}
+
+/* Estándar de tamaño de títulos y textos, mas cosas comunes */
 
 
 /* Enlaces */
 .link-kofi {
-    color: var(--text-light);
+    color: #c999a1;
     text-decoration: none;
     transition: color 0.2s linear;
 }
@@ -202,8 +221,7 @@ h3,
     z-index: 1;
     margin-bottom: 3rem;
     /* espacio entre la barra y el contenido */
-    border: 1px solid #333;
-    transition: transform 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+    border: var(--border-comic);
 }
 
 .navbar.on-comic {
@@ -300,7 +318,7 @@ h3,
     text-align: center;
     padding: 1rem;
     background: var(--bg-secondary);
-    border: 1px solid #333;
+    border: var(--border-comic);
     margin-top: 2rem;
     position: relative;
     transition: transform 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
@@ -420,13 +438,7 @@ h3,
     height: 450px;
     /* Altura uniforme para todos */
     overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
     background: #ede0df;
-}
-
-.spotlight-img-wrapper:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px var(--accent);
 }
 
 .spotlight-img-wrapper img {
@@ -535,13 +547,8 @@ h3,
     background: var(--bg-card);
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
     margin: 1rem;
-}
-
-.character-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px var(--accent);
+    height: 490px;
 }
 
 .character-card img {
@@ -611,12 +618,6 @@ h3,
 .download-card {
     background: var(--bg-card);
     overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.download-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px var(--accent);
 }
 
 .download-card img {
@@ -716,7 +717,7 @@ h3,
     padding: 0.5rem 1rem;
     background: var(--bg-card);
     color: var(--text-primary);
-    border: 2px solid var(--accent);
+    border: var(--border-comic);
     margin-left: 0.5rem;
     font-family: var(--font-main);
     font-size: 1.2rem;
@@ -743,6 +744,7 @@ h3,
     background: var(--bg-card);
     display: block;
     margin: 0 auto;
+    border: var(--border-comic);
 }
 
 /* OPCION ALTERNATIVA: ancho completo. Descomenta y comenta la .comic-page de arriba */
@@ -863,12 +865,13 @@ h3,
     background: var(--bg-card);
     overflow: hidden;
     text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
 .chapter-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px var(--accent);
+    background: var(--bg-card-hover);
 }
 
 .chapter-card img {
