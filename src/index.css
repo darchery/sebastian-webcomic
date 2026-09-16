@@ -54,7 +54,7 @@
     --shadow-md: 0 6px 18px rgba(140, 37, 42, 0.12);
     --shadow-comic: 4px 4px 0px #211516;
     /* Sombra sólida estilo viñeta de cómic */
-    --border-comic: 2px solid #211516;
+    --border-comic: 2.5px solid #211516;
 }
 
 * {
@@ -140,12 +140,15 @@ h3,
 .download-info h3,
 .spotlight h3,
 .text-card h3,
-.donate-info h3 {
+.donate-info h3,
+.chapter-card-title {
     font-size: 1.5rem;
     /* PARA H3 */
     color: var(--accent);
     margin-bottom: 0.5rem;
     font-family: var(--font-heading);
+    letter-spacing: 0.5px;
+
 }
 
 /* Texto base de lectura */
@@ -195,20 +198,56 @@ h3,
 
 .character-card,
 .download-card,
+.chapter-card,
 .spotlight-img-wrapper {
+    background: var(--bg-card);
+    border: var(--border-comic);
+    box-shadow: 3px 3px 0px rgba(33, 21, 22, 0.4);
+    overflow: hidden;
+
     transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
 .character-card:hover,
+.chapter-card:hover,
 .download-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px var(--accent);
     background: var(--bg-card-hover);
+    /* PREGUNTAR DANI: mejor sólo rojo, sólo negro o ambos? */
+    box-shadow: var(--shadow-comic);
+    /*box-shadow: 0 8px 24px var(--accent);*/
+    /*box-shadow: var(--shadow-comic), 0 8px 20px var(--bg-hero);*/
 }
 
 .spotlight-img-wrapper:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px var(--accent);
+    /* PREGUNTAR DANI: mejor sólo rojo, sólo negro o ambos */
+    /*box-shadow: 0 8px 24px var(--accent);*/
+    box-shadow: var(--shadow-comic);
+    /*box-shadow: var(--shadow-comic), 0 8px 20px var(--bg-hero);*/
+
+}
+
+/* Borde inferior para las imágenes*/
+.character-card img,
+.chapter-card img,
+.download-card img {
+    border-bottom: var(--border-comic);
+}
+
+
+.text-card,
+.spotlight,
+.news-article,
+.donate-info,
+.donate-buttons a,
+.img-donacion,
+.back-link,
+.btn,
+.character-bio-full,
+.character-profile,
+.character-profile-img {
+    border: var(--border-comic);
 }
 
 /* Estándar de tamaño de títulos y textos, mas cosas comunes */
@@ -609,7 +648,6 @@ h3,
 /* Character Card */
 .character-card {
     background: var(--bg-card);
-    overflow: hidden;
     cursor: pointer;
     margin: 1rem;
     height: 490px;
@@ -685,7 +723,6 @@ h3,
 
 .download-card {
     background: var(--bg-card);
-    overflow: hidden;
 }
 
 .download-card img {
@@ -711,7 +748,6 @@ h3,
 
 .img-donacion {
     max-width: 100%;
-    border: 2px solid var(--accent);
     margin-bottom: 2rem;
 }
 
@@ -931,15 +967,7 @@ h3,
 
 .chapter-card {
     background: var(--bg-card);
-    overflow: hidden;
     text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-}
-
-.chapter-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px var(--accent);
-    background: var(--bg-card-hover);
 }
 
 .chapter-card img {

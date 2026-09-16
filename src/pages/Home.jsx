@@ -191,7 +191,7 @@ export default function Home() {
                                         to={`/characters/${character.id}`}
                                         className="spotlight-title-link"
                                     >
-                                        <h3>{character.name}</h3>
+                                        <h2>{character.name}</h2>
                                     </NavLink>
 
                                     <p className="spotlight-phrase">{character.short_phrase}</p>
