@@ -833,11 +833,16 @@ h3,
     border: 2px solid var(--accent);
 }
 
+.comic-reader {
+    max-width: 950px;
+}
+
 .page-scroll {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    /* PREGUNTAR DANI: gap: 0; */
     width: 100%;
 }
 
