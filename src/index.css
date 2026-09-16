@@ -214,7 +214,7 @@ h3,
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 2rem;
     background: var(--bg-secondary);
     position: sticky;
     top: 0;
@@ -222,6 +222,8 @@ h3,
     margin-bottom: 3rem;
     /* espacio entre la barra y el contenido */
     border: var(--border-comic);
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
 
 .navbar.on-comic {
@@ -230,16 +232,27 @@ h3,
 
 /* Donde pone el Título - versión previa*/
 .navbar-logo {
+    /* Antigua versión */
     font-family: var(--font-heading);
     font-size: 3.5rem;
     color: var(--accent);
     text-decoration: none;
+
+    /* Nueva */
+    display: flex;
+    align-items: center;
 }
 
 .navbar-logo img {
     height: 10rem;
     object-fit: contain;
     width: auto;
+
+    transition: transform 0.2s;
+}
+
+.navbar-logo img:hover {
+    transform: scale(1.05);
 }
 
 /* Enlaces de la barra de navegación */
@@ -248,19 +261,30 @@ h3,
     list-style: none;
     gap: 1.5rem;
     font-size: 1.5rem;
+    font-weight: 600;
     overflow: hidden;
 }
 
 .navbar-links a {
     color: var(--text-light);
     text-decoration: none;
-    transition: color 0.2s linear;
+    transition: all 0.2s linear;
+
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-sm);
 }
 
-.navbar-links a:hover,
-.navbar-links a.active {
-    color: var(--accent-light);
+.navbar-links a:hover {
+    color: rgb(250, 250, 230);
+    background: rgba(255, 255, 255, 0.15);
 }
+
+.navbar-links a.active {
+    color: rgb(255, 255, 229);
+    background: var(--accent);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
 
 /* Menú desplegable */
 .menu-toggle {
