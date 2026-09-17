@@ -88,7 +88,7 @@ button {
     display: inline-block;
     padding: 0.75rem 1.5rem;
     background: var(--accent);
-    color: white;
+    color: var(--text-light);
     border: none;
     font-size: 1rem;
     margin-top: 1rem;
@@ -98,7 +98,9 @@ button {
 
 .btn:hover {
     background: var(--accent-hover);
-    color: var(--accent);
+    /* PREGUNTAR DANI: si quiere que cambie 
+    el color también del texot (cómo antes) o que sólo cambien el fondo (como ahora) */
+    /*color: var(--accent);*/
 }
 
 /* Estándar de tamaño de títulos y textos */
@@ -164,11 +166,13 @@ h3,
     line-height: 1.6;
 }
 
+/* Borde grande para contenidos importantes */
 .hero,
 .spotlight {
     border-radius: var(--radius-lg);
 }
 
+/* Borde grande para contenidos de texto y demás features */
 .character-card,
 .download-card,
 .chapter-card,
@@ -188,14 +192,16 @@ h3,
     border-radius: var(--radius-md);
 }
 
+/* Borde pequeño para botones de acción simple */
+.comic-page,
 .btn-carousel,
 .chapter-selector select,
 .chapter-selector option,
-.news-date,
-.comic-page {
+.news-date {
     border-radius: var(--radius-sm);
 }
 
+/* Fondo, Sombra, borde y transición para tarjetas de personaje, capítulo, etc */
 .character-card,
 .download-card,
 .chapter-card,
@@ -208,23 +214,23 @@ h3,
     transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
+/* Animación para los anteriores: Elevación, Sombra y Background */
 .character-card:hover,
 .chapter-card:hover,
 .download-card:hover {
     transform: translateY(-4px);
     background: var(--bg-card-hover);
-    /* PREGUNTAR DANI: mejor sólo rojo, sólo negro o ambos? */
     box-shadow: var(--shadow-comic);
-    /*box-shadow: 0 8px 24px var(--accent);*/
-    /*box-shadow: var(--shadow-comic), 0 8px 20px var(--bg-hero);*/
+    /*box-shadow: 0 8px 24px var(--accent); AURA ROJA*/
+    /*box-shadow: var(--shadow-comic), 0 8px 20px var(--bg-hero); AMBAS AURAS ROJA Y NEGRA*/
 }
 
+/* Animación para los anteriores: Elevación, Sombra y Background */
 .spotlight-img-wrapper:hover {
     transform: translateY(-4px);
-    /* PREGUNTAR DANI: mejor sólo rojo, sólo negro o ambos */
-    /*box-shadow: 0 8px 24px var(--accent);*/
     box-shadow: var(--shadow-comic);
-    /*box-shadow: var(--shadow-comic), 0 8px 20px var(--bg-hero);*/
+    /*box-shadow: 0 8px 24px var(--accent); AURA ROJA*/
+    /*box-shadow: var(--shadow-comic), 0 8px 20px var(--bg-hero);  AMBAS AURAS ROJA Y NEGRA*/
 
 }
 
@@ -235,7 +241,8 @@ h3,
     border-bottom: var(--border-comic);
 }
 
-
+/* Borde cajas de contenido */
+.comic-page,
 .text-card,
 .spotlight,
 .news-article,
@@ -250,12 +257,44 @@ h3,
     border: var(--border-comic);
 }
 
+
+/* Transiciones botones y sombras */
+.btn,
+.donate-btn {
+    box-shadow: 2px 2px 0px #211516;
+    transition: all 0.15s ease;
+}
+
+/* Animación de subida a la izquierda de los botones (como LEER CÓMIC) */
+.btn:hover,
+.donate-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px #211516;
+}
+
+/* Animación para silumar clickar el botón, moviendolo un poco hacia derecha y abajo (inverso al hover)*/
+.btn:active,
+.donate-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px #211516;
+}
+
+/* PREGUNTAR A DANI: sombra en cada texto?*/
+.text-card,
+.spotlight,
+.news-article,
+.donate-info,
+.character-profile,
+.character-bio-full {
+    box-shadow: var(--shadow-comic);
+}
+
 /* Estándar de tamaño de títulos y textos, mas cosas comunes */
 
 
 /* Enlaces */
 .link-kofi {
-    color: #c999a1;
+    color: #ac8289;
     text-decoration: none;
     transition: color 0.2s linear;
 }
@@ -390,7 +429,10 @@ h3,
 
 /* Footer */
 .footer {
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    gap: 0.25rem;
     padding: 1rem;
     background: var(--bg-secondary);
     border: var(--border-comic);
@@ -415,7 +457,7 @@ h3,
 
 .footer,
 .footer-text {
-    color: var(--accent-light);
+    color: var(--text-light);
 }
 
 /* Footer */
@@ -428,6 +470,7 @@ h3,
     min-height: 100vh;
 }
 
+/* Va entre el Navbar y Footer => Outlet*/
 .main-content {
     flex: 1;
     padding: 0rem 1rem;
@@ -541,10 +584,27 @@ h3,
     background: #ede0df;
 }
 
+/* Animación suave al cambiar de personaje */
+@keyframes characterFade {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+        /* Empieza un pelín más pequeño */
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+        /* Llega a su tamaño natural */
+    }
+}
+
 .spotlight-img-wrapper img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+
+    animation: characterFade 0.25s ease-out;
 }
 
 /* Columna derecha de información */
@@ -839,7 +899,7 @@ h3,
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    /* PREGUNTAR DANI: gap: 0; */
+    /* PREGUNTAR DANI: gap: 0;  PAGINAS JUTNAS O SEPARADAS CON BORDES*/
     width: 100%;
 }
 
@@ -850,7 +910,7 @@ h3,
     background: var(--bg-card);
     display: block;
     margin: 0 auto;
-    border: var(--border-comic);
+    /*border: var(--border-comic);*/
 }
 
 /* OPCION ALTERNATIVA: ancho completo. Descomenta y comenta la .comic-page de arriba */

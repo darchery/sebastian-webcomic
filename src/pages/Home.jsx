@@ -162,7 +162,7 @@ export default function Home() {
                                         className="spotlight-img-wrapper"
                                         title={`Ver ficha de ${character.name}`}
                                     >
-                                        <img src={character.image_url} alt={character.name} />
+                                        <img key={character.id} src={character.image_url} alt={character.name} />
                                     </NavLink>
                                     {/* Controles de carrusel justo debajo de la imagen */}
                                     <div className='spotlight-carousel-controls'>

@@ -26,8 +26,8 @@ export default function Donate() {
                         <section>
                             <p>
                                 Contamos con el servicio de <DonationLink name="kofi"></DonationLink>, en el cual disponemos
-                                de donativos y servicios de membresía, que contará con ilustraciones exclusivas para
-                                miembros y contenido del cómic anticipado.
+                                de donativos, y en un futuro, servicios de membresía que contarán con ilustraciones exclusivas para
+                                miembros, contenido del cómic anticipado y demás exclusivos.
                             </p>
                         </section>
                         <section>
