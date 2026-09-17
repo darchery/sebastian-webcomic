@@ -22,7 +22,9 @@
     --bg-card: #ffffff;
     /* Blanco roto / marfil para destacar el contenido con claridad */
     --bg-card-hover: #fff5f5;
+    /* Hover card */
     --bg-hero: #5c1417;
+    /* Vino infernal */
 
     /* Colores de Marca y Acento */
     --accent: #a81c1c;
@@ -52,9 +54,11 @@
 
     --shadow-sm: 0 2px 6px rgba(140, 37, 42, 0.08);
     --shadow-md: 0 6px 18px rgba(140, 37, 42, 0.12);
-    --shadow-comic: 4px 4px 0px #211516;
+    --shadow-comic: 3px 3px 0px rgba(33, 21, 22, 0.4);
+    --shadow-comic-hover: 4px 4px 0px #211516;
     /* Sombra sólida estilo viñeta de cómic */
     --border-comic: 2.5px solid #211516;
+
 }
 
 * {
@@ -208,7 +212,7 @@ h3,
 .spotlight-img-wrapper {
     background: var(--bg-card);
     border: var(--border-comic);
-    box-shadow: 3px 3px 0px rgba(33, 21, 22, 0.4);
+    box-shadow: var(--shadow-comic);
     overflow: hidden;
 
     transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
@@ -220,17 +224,17 @@ h3,
 .download-card:hover {
     transform: translateY(-4px);
     background: var(--bg-card-hover);
-    box-shadow: var(--shadow-comic);
+    box-shadow: var(--shadow-comic-hover);
     /*box-shadow: 0 8px 24px var(--accent); AURA ROJA*/
-    /*box-shadow: var(--shadow-comic), 0 8px 20px var(--bg-hero); AMBAS AURAS ROJA Y NEGRA*/
+    /*box-shadow: var(--shadow-comic-hover), 0 8px 20px var(--bg-hero); AMBAS AURAS ROJA Y NEGRA*/
 }
 
 /* Animación para los anteriores: Elevación, Sombra y Background */
 .spotlight-img-wrapper:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-comic);
+    box-shadow: var(--shadow-comic-hover);
     /*box-shadow: 0 8px 24px var(--accent); AURA ROJA*/
-    /*box-shadow: var(--shadow-comic), 0 8px 20px var(--bg-hero);  AMBAS AURAS ROJA Y NEGRA*/
+    /*box-shadow: var(--shadow-comic-hover), 0 8px 20px var(--bg-hero);  AMBAS AURAS ROJA Y NEGRA*/
 
 }
 
@@ -261,7 +265,8 @@ h3,
 /* Transiciones botones y sombras */
 .btn,
 .donate-btn {
-    box-shadow: 2px 2px 0px #211516;
+    /*box-shadow: 2px 2px 0px #211516;*/
+    box-shadow: var(--shadow-comic);
     transition: all 0.15s ease;
 }
 
@@ -285,7 +290,10 @@ h3,
 .news-article,
 .donate-info,
 .character-profile,
-.character-bio-full {
+.character-bio-full,
+.img-donacion,
+.character-profile-img,
+.comic-page {
     box-shadow: var(--shadow-comic);
 }
 
@@ -530,7 +538,7 @@ h3,
 
     border: var(--border-comic);
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-comic);
+    box-shadow: var(--shadow-comic-hover);
     text-shadow: 1px 1px 0px #000;
 
     transition: all 0.2s ease;
