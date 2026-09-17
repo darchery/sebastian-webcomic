@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false)
-    const location = useLocation()
-    const isComic = location.pathname.startsWith('/comic/')
 
     return (
-        <nav className={`navbar ${isComic ? 'on-comic' : ''}`}>
+        <nav className="navbar">
             <NavLink to="/" className="navbar-logo"><img src="https://sxpjkvdcgsdzncoljzkx.supabase.co/storage/v1/object/public/wallpapers/letras-titulo.webp" alt="COSAS DEL MÁS ALLÁ" /></NavLink>
 
             <button
