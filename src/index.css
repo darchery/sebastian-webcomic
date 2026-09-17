@@ -56,7 +56,6 @@
     --shadow-md: 0 6px 18px rgba(140, 37, 42, 0.12);
     --shadow-comic: 3px 3px 0px rgba(33, 21, 22, 0.4);
     --shadow-comic-hover: 4px 4px 0px #211516;
-    --shadow-titles: 1.5px 1.5px 0px rgba(33, 21, 22, 0.4);
     /* Sombra sólida estilo viñeta de cómic */
     --border-comic: 2.5px solid #211516;
 
@@ -129,9 +128,6 @@ h3,
     margin-bottom: 1rem;
     font-size: 2.8rem;
     /* PARA H1 */
-
-    /* PREGUNTAR A DANI EN GENERAL SOMBRAS EN TITULOS / CAPITULOS ETC?: Gris, negro o nada*/
-    text-shadow: var(--shadow-titles);
 }
 
 /* Secciones intermedias (Home, Noticias) */
@@ -143,8 +139,6 @@ h3,
     color: var(--accent);
     margin-bottom: 0.75rem;
     font-family: var(--font-heading);
-
-    text-shadow: var(--shadow-titles);
 }
 
 /* Títulos de tarjetas (Personajes, Descargas, etc.) */
@@ -160,8 +154,6 @@ h3,
     margin-bottom: 0.5rem;
     font-family: var(--font-heading);
     letter-spacing: 0.5px;
-
-    text-shadow: var(--shadow-titles);
 }
 
 /* Texto base de lectura */
