@@ -65,6 +65,23 @@ export default function Downloads() {
         }
     }
 
+    function handleDownload(d) {
+
+        downloadAsPng(d.image_url, d.title)
+
+        // Analítica: Registrar descarga de wallpaper
+        /*
+        if (!import.meta.env.DEV && localStorage.getItem('track') !== 'false') {
+            supabase
+                .from('events')
+                .insert({
+                    event_type: 'download_wallpaper',
+                    metadata: { wallpaper_id: d.id, title: d.title }
+                })
+                .then(({ error }) => error && console.error(error))
+        }
+        */
+    }
 
     if (loading) return <p className="spinner"></p>
     if (error) return (
@@ -98,7 +115,7 @@ export default function Downloads() {
                                         </a>
                                         <div className="download-info">
                                             <h3>{d.title}</h3>
-                                            <button className="btn" onClick={() => downloadAsPng(d.image_url, d.title)}>Descargar</button>
+                                            <button className="btn" onClick={() => handleDownload(d)}>Descargar</button>
                                         </div>
                                     </div>
                                 ))

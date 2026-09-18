@@ -97,6 +97,36 @@ export default function Comic() {
         navigate(`/comic/${e.target.value}`)
     }
 
+    // Analítica: Registrar finalización de capítulo al llegar al footer
+    /*useEffect(() => {
+        if (import.meta.env.DEV || localStorage.getItem('track') === 'false' || !selectedChapter?.id) return
+
+        const footerElement = document.querySelector('.comic-nav-footer')
+        if (!footerElement) return
+
+        let reported = false
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting && !reported) {
+                reported = true
+                const sessionId = sessionStorage.getItem('nav_session_id')
+                supabase
+                    .from('events')
+                    .insert({
+                        event_type: 'chapter_complete',
+                        path: `/comic/${selectedChapter.id}`,
+                        session_id: sessionId,
+                        metadata: {
+                            chapter_number: selectedChapter.chapter_number,
+                            title: selectedChapter.title
+                        }
+                    }).then(({ error }) => error && console.error(error))
+            }
+        }, { threshold: 0.5 })
+
+        observer.observe(footerElement)
+        return () => observer.disconnect()
+    }, [selectedChapter?.id, pages.length])*/
+
     if (loadingChapters) return <p className="spinner"></p>
     if (error) return (
         <div>

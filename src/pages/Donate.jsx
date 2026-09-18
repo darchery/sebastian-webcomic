@@ -1,6 +1,7 @@
 import DonationLink from "../components/DonationLink"
 import useDocumentTitle from "../hooks/useDocumentTitle"
 import { DONATION_URLS } from "../lib/constants"
+// import { trackDonationClick } from "../lib/analytics"
 
 export default function Donate() {
 
@@ -42,6 +43,7 @@ export default function Donate() {
                             target="_blank"
                             rel="noopener"
                             className="donate-btn kofi-btn"
+                        /*onClick={() => trackDonationClick('kofi')}*/
                         >
                             Ko-fi
                         </a>
@@ -50,6 +52,7 @@ export default function Donate() {
                             target="_blank"
                             rel="noopener"
                             className="donate-btn paypal-btn"
+                        /*onClick={() => trackDonationClick('paypal')}*/
                         >
                             Paypal
                         </a>

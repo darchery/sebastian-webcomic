@@ -35,6 +35,27 @@ export default function CharacterPage() {
             'Personaje'
     )
 
+    /*
+    // Analítica: Registrar vista de personaje cuando cargan sus datos
+    useEffect(() => {
+        if (!character?.id) return
+        if (import.meta.env.DEV || localStorage.getItem('track') === 'false') return
+
+        supabase
+            .from('events')
+            .insert({
+                event_type: 'character_view',
+                metadata: {
+                    character_id: character.id,
+                    name: character.name
+                }
+            })
+            .then(({ error }) => {
+                if (error) console.error(error)
+            })
+    }, [character?.id])
+    */
+
     if (loading) return <p className="spinner"></p>
     if (error) return <p className="empty-text">{errorMessage}</p>
     if (!character) return (
