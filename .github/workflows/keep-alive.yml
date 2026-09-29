@@ -1,0 +1,16 @@
+name: Supabase Keep Alive
+
+on:
+  schedule:
+    - cron: '0 12 */3 * *' # Se ejecuta cada 3 días a las 12:00 UTC
+  workflow_dispatch: # Añade un botón en GitHub para ejecutarlo manualmente y probarlo
+
+jobs:
+  ping-supabase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Consulta a la base de datos
+        run: |
+          curl -X GET "${{ secrets.SUPABASE_URL }}/rest/v1/characters?select=*&limit=1" \
+          -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+          -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}"
