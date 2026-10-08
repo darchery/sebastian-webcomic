@@ -56,3 +56,10 @@ sebastian-webcomic/
 ├── package.json
 └── vite.config.js
 ```
+
+## Licencias
+
+- **Código fuente**: licencia **MIT** (ver `/home/runner/work/sebastian-webcomic/sebastian-webcomic/LICENSE`).
+- **Arte y contenido visual** (páginas del cómic, ilustraciones, wallpapers, logos y recursos gráficos): licencia **Creative Commons BY-NC-ND 4.0** (ver `/home/runner/work/sebastian-webcomic/sebastian-webcomic/LICENSE-ARTWORK`).
+
+Esto permite usar el código libremente con conservación de autoría/licencia, y usar el arte con atribución, sin uso comercial y sin distribuir versiones modificadas.
