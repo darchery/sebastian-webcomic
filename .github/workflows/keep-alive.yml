@@ -6,11 +6,19 @@ on:
   workflow_dispatch: # Añade un botón en GitHub para ejecutarlo manualmente y probarlo
 
 jobs:
-  ping-supabase:
+  ping-rest:
     runs-on: ubuntu-latest
     steps:
-      - name: Consulta a la base de datos
+      - name: Consulta vía API REST
         run: |
-          curl -X GET "${{ secrets.SUPABASE_URL }}/rest/v1/characters?select=*&limit=1" \
-          -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
-          -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}"
+          curl -fsS "${{ secrets.SUPABASE_URL }}/rest/v1/characters?select=id&limit=1" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}"
+
+  ping-postgres:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Consulta directa a Postgres
+        env:
+          DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: psql "$DB_URL" -c "select count(*) from public.characters;"
