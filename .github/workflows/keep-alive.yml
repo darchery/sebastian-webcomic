@@ -2,7 +2,7 @@ name: Supabase Keep Alive
 
 on:
   schedule:
-    - cron: '0 12 */3 * *' # Se ejecuta cada 3 días a las 12:00 UTC
+    - cron: '0 12 * * *' # Se ejecuta cada 3 días a las 12:00 UTC
   workflow_dispatch: # Añade un botón en GitHub para ejecutarlo manualmente y probarlo
 
 jobs:
@@ -22,3 +22,10 @@ jobs:
         env:
           DB_URL: ${{ secrets.SUPABASE_DB_URL }}
         run: psql "$DB_URL" -c "select count(*) from public.characters;"
+
+#0   12   */3   *   *
+#│    │     │    │   └─ día de la semana (0-6, domingo=0)
+#│    │     │    └───── mes (1-12)
+#│    │     └────────── día del mes (1-31)
+#│    └──────────────── hora (0-23, en UTC)
+#└───────────────────── minuto (0-59)
